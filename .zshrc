@@ -170,21 +170,6 @@ if [ -f ~/.git-prompt.sh ]; then
     setopt PROMPT_SUBST ; PS1='[%n@%m %c$(__git_ps1 " (%s)")]\$ '
 fi
 
-
-########## My stuff ##########
-# Issue a new certificate. (The word "ⲛⲟϥⲣⲓ" simply means "hi" in Coptic.
-# Requesting a certificate is the equivalent of saying hi to your computer.
-alias nofri='ssh -A ssh.booking.com'
-
-# KVM sync
-alias ks='dude git-pull && dude restart && dude concat'
-
-# KVM clean
-alias kr='dude restart-clean-tail'
-
-# KVM create aliases
-alias ka='dude create-aliases'
-
 ########## My stuff ##########
 eval "$(/opt/homebrew/bin/brew shellenv)"
 alias format="bash ~/coptic/dictionary/marcion/utils/formatter.py"
