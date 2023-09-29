@@ -43,8 +43,11 @@ cp -r \
   .cp_dotfiles.sh \
   .gitconfig \
   .zshrc \
-  .config \
   "${DEST}"
+
+cp -r \
+  .config/nvim \
+  "${DEST}/.config/"
 
 if ${IS_ALL}; then
   cp -r \
