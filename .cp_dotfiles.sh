@@ -12,8 +12,9 @@ while [ $# -gt 0 ]; do
     echo "Options:"
     echo " --help         Display this help message."
     echo " --dest <dir>   Specify destination."
-    echo " --git          The destination is a Git directory."
     echo " --all          Copy all files."
+    echo " --git          The destination is a Git directory."
+    echo " --push         Besides creating a commit, push."
     exit 0
     ;;
   --push)
