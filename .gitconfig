@@ -251,7 +251,7 @@
 
     mt = mergetool
 
-    ms = merge --squah
+    ms = merge --squash
     mff = merge --ff  # Perform a fast-forward merge if the merged-in history is already a descendant of the current history. This is default.
     mnff = merge --no-ff  # Create a merge-commit even if the merged-in history is already a descendant of the current history.
     mffo = merge --ff-only  # Perform a fast-forward merge if merging into a descendant of the current branch, or fail.
