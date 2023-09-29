@@ -17,7 +17,6 @@
 
     writeCommitGraph = true
 
-
 [diff]
     indentHeuristic = true
 
@@ -50,7 +49,6 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 
-
 [color]
     ui = always
 
@@ -60,9 +58,6 @@
     a = add
 
     alclmdp = ! git add . && git commit --all --message DEFAULT && git push
-
-    alias = alias  # Reserved for a different command.
-    aliases = aliases  # Reserved for a different command.
 
     # branch
     b = branch  # List all of the branches in your repo.
@@ -114,8 +109,6 @@
     de = clean --exclude
     dx = clean -x  # Clean everything, including ignored files.
     dxx = clean -X  # Clean only ignored files.
-    doc = doc  # Reserved for a different command.
-    docs = docs  # Reserved for a different command.
 
     ddf = clean -d --force  # Force-recurse. Go to directories.
     dqf = clean --quiet --force
@@ -170,7 +163,6 @@
     ips = diff --patch-with-stat
 
     ic = diff --cached  # Diff the index and the last commit.
-    is = diff --staged  # This is synonymous to `diff --cached`.
     icno = diff --cached --name-only
     icns = diff --cached --name-status
     ics = diff --cached --stat
@@ -249,13 +241,17 @@
     lfrd = reflog --relative-date
     lfl = reflog --all
 
+    tree = llgod
+
     # merge, mergetool
     m = merge  # Incorporate changes from the named commits (since the time their histories diverged from the current branch) into the current branch.
     ma = merge --abort  # Abort the current conflict resolution process, and try to reconstruct the pre-merge state.
     mc = merge --continue
     mq = merge --quit  # Forget about the current merge in progress. Leave the index and the working tree as-is.
+
     mt = mergetool
 
+    ms = merge --squah
     mff = merge --ff  # Perform a fast-forward merge if the merged-in history is already a descendant of the current history. This is default.
     mnff = merge --no-ff  # Create a merge-commit even if the merged-in history is already a descendant of the current history.
     mffo = merge --ff-only  # Perform a fast-forward merge if merging into a descendant of the current branch, or fail.
@@ -346,8 +342,6 @@
     sm = switch --merge  # Switch to a branch, resolving conflicts in case you have local modifications to one or more files that are different between the current branch and the branch to which you are switching.
     s- = switch -  # Switch to the last branch switched to.
     sd = switch --detach  # Switch to a commit for inspection and discardable experiments.
-
-    sync = sync  # Reserved for a different command.
 
     # status
     t = status
