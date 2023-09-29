@@ -43,7 +43,7 @@ cp -r \
   .cp_dotfiles.sh \
   .gitconfig \
   .zshrc \
-  .config/ \
+  .config \
   "${DEST}"
 
 if ${IS_ALL}; then
