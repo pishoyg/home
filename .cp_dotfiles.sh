@@ -3,6 +3,7 @@
 DEST=""
 IS_GIT=false
 IS_ALL=false
+IS_PUSH=false
 
 while [ $# -gt 0 ]; do
   case $1 in
@@ -14,6 +15,9 @@ while [ $# -gt 0 ]; do
     echo " --git          The destination is a Git directory."
     echo " --all          Copy all files."
     exit 0
+    ;;
+  --push)
+    IS_PUSH=true
     ;;
   --git)
     IS_GIT=true
@@ -65,4 +69,7 @@ fi
 if ${IS_GIT}; then
   git -C "${DEST}" add .
   git -C "${DEST}" commit --all --message "DEFAULT"
+  if ${IS_PUSH}; then
+    git -C "${DEST}" push
+  fi
 fi
