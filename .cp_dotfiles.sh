@@ -62,5 +62,4 @@ fi
 if ${IS_GIT}; then
   git -C "${DEST}" add .
   git -C "${DEST}" commit --all --message "DEFAULT"
-  git -C "${DEST}" push
 fi
