@@ -207,7 +207,6 @@ alias vi=vim
 alias g=git
 alias python=python3
 alias pip=pip3
-alias g++="g++ -x c++ -std=c++20 -Wall -O2 -static -pipe"
 alias reboot='shutdown -r now'
 
 # Copy alias

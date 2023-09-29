@@ -46,8 +46,8 @@ cp -r \
   "${DEST}"
 
 cp -r \
-  .config/nvim \
-  "${DEST}/.config/"
+  .config/nvim/init.lua \
+  "${DEST}/.config/nvim/"
 
 if ${IS_ALL}; then
   cp -r \
