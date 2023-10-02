@@ -45,7 +45,7 @@ fi
 
 ### Main
 cp -r \
-  .cp_dotfiles.sh \
+  cp_dotfiles.sh \
   .gitconfig \
   .zshrc \
   "${DEST}"
