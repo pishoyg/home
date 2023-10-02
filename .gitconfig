@@ -56,6 +56,7 @@
 
     # add
     a = add
+    al = add .
 
     alclmdp = ! git add . && git commit --all --message DEFAULT && git push
 
@@ -77,6 +78,7 @@
     bf = branch --force  # Force-create a branch.
 
     bsut = branch --set-upstream-to  # Set the upstream for a branch.
+    bsutom = branch --set-upstream-to origin/master  # Set the upstream for a branch.
 
     bz = branch --move  # Rename a branch.
     bzf = branch --move --force  # Force-rename a branch.

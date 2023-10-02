@@ -1,7 +1,7 @@
 ### Flags
 
 DEST=""
-IS_GIT=false
+IS_COMMIT=false
 IS_ALL=false
 IS_PUSH=false
 
@@ -13,15 +13,15 @@ while [ $# -gt 0 ]; do
     echo " --help         Display this help message."
     echo " --dest <dir>   Specify destination."
     echo " --all          Copy all files."
-    echo " --git          The destination is a Git directory."
+    echo " --commit       Add all and create a commit. Only works if the destination is a Git repo."
     echo " --push         Besides creating a commit, push."
     exit 0
     ;;
   --push)
     IS_PUSH=true
     ;;
-  --git)
-    IS_GIT=true
+  --commit)
+    IS_COMMIT=true
     ;;
   --all)
     IS_ALL=true
@@ -67,7 +67,7 @@ if ${IS_ALL}; then
     "${DEST}"
 fi
 
-if ${IS_GIT}; then
+if ${IS_COMMIT}; then
   git -C "${DEST}" add .
   git -C "${DEST}" commit --all --message "DEFAULT"
   if ${IS_PUSH}; then
