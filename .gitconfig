@@ -100,6 +100,9 @@
     clrmoh = commit --all --reuse-message=ORIG_HEAD
     cal = commit --amend --all
     clm = commit --all --message
+    clmd = commit --all --message DEFAULT
+    clmdp = ! git commit --all --message DEFAULT && git push
+
 
     # clean
     d = clean
