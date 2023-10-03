@@ -408,9 +408,9 @@
     # grep
     grep = grep  # Look for specified patterns in the tracked files in the work tree, blobs registered in the index file, or blobs in given tree objects. Patterns are lists of one or more search expressions separated by newline characters. An empty string as search expression matches all lines.
 
-    # Rename a branch.
-    # git branch --move main master
-    # git remote rename origin/main origin/master
-    # git fetch origin
-    # git branch --set-upstream-to origin/master master
-    # git remote set-head origin --auto
+    # Rename a branch (from `main` to `master`).
+    # git branch --move main master  # g bz main master
+    # git remote rename origin/main origin/master  # g yz origin/main origin/master
+    # git fetch origin  # g fo
+    # git branch --set-upstream-to origin/master master  # g bsutom master
+    # git remote set-head origin --auto  # g yshoa
