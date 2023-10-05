@@ -1,10 +1,10 @@
 ### Flags
 
+SRC=""
 DEST=""
 IS_ALL=false
 MESSAGE=""
 IS_SYNC=false
-SRC="$(pwd)"
 
 while [ $# -gt 0 ]; do
   case $1 in
@@ -13,11 +13,16 @@ while [ $# -gt 0 ]; do
     echo "Usage: $0 [OPTIONS]"
     echo "Options:"
     echo " --help             Display this help message."
+    echo " --src <dir>        Specify source. Defaults to \$(pwd)."
     echo " --dest <dir>       Specify destination."
     echo " --all              Copy all files."
     echo " --message <msg>    Commit message. This is ignored if --sync isn't given. Defaults to 'DEFAULT'"
     echo " --sync             This is only valid if the destination is a Git repo. After copying, commit, pull, and push."
     exit 0
+    ;;
+  --src)
+    SRC=$2
+    shift
     ;;
   --dest)
     DEST=$2
@@ -40,6 +45,10 @@ while [ $# -gt 0 ]; do
   esac
   shift
 done
+
+if [[ -z $SRC ]]; then
+  SRC="$(pwd)"
+fi
 
 if [[ -z $DEST ]]; then
   echo "--dest is required."
