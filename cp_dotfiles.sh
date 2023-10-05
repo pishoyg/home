@@ -8,6 +8,7 @@ IS_SYNC=false
 while [ $# -gt 0 ]; do
   case $1 in
   --help)
+    echo "Copy home directory files, typically between your home directory and a Git repo."
     echo "Usage: $0 [OPTIONS]"
     echo "Options:"
     echo " --help             Display this help message."
