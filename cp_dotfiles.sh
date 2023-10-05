@@ -4,6 +4,7 @@ DEST=""
 IS_ALL=false
 MESSAGE=""
 IS_SYNC=false
+SRC="$(pwd)"
 
 while [ $# -gt 0 ]; do
   case $1 in
@@ -55,25 +56,25 @@ fi
 copy() {
   local DEST="${1}"
   cp -r \
-    cp_dotfiles.sh \
-    .gitconfig \
-    .zshrc \
+    "${SRC}"/cp_dotfiles.sh \
+    "${SRC}"/.gitconfig \
+    "${SRC}"/.zshrc \
     "${DEST}"
 
   cp -r \
-    .config/nvim/init.lua \
+    "${SRC}"/.config/nvim/init.lua \
     "${DEST}/.config/nvim/"
 
   if ${IS_ALL}; then
     cp -r \
-      .prompt \
-      .alias \
-      .profile \
-      .git-prompt.sh \
-      .bookstrap \
-      .vimrc \
-      .inputrc \
-      .replyrc \
+      "${SRC}"/.prompt \
+      "${SRC}"/.alias \
+      "${SRC}"/.profile \
+      "${SRC}"/.git-prompt.sh \
+      "${SRC}"/.bookstrap \
+      "${SRC}"/.vimrc \
+      "${SRC}"/.inputrc \
+      "${SRC}"/.replyrc \
       "${DEST}"
   fi
 }
