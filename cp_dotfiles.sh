@@ -88,7 +88,7 @@ main() {
 
   # Sync with the remote repo.
   git -C "${GIT_REPO}" add .
-  git -C "${GIT_REPO}" commit --all --message "${MESSAGE}"
+  git -C "${GIT_REPO}" commit --message "${MESSAGE}"
   git -C "${GIT_REPO}" pull --rebase
   git -C "${GIT_REPO}" push
 
