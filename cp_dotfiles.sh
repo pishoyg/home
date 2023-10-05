@@ -1,31 +1,23 @@
 ### Flags
 
-SRC=""
-DEST=""
+GIT_REPO=""
 IS_ALL=false
 MESSAGE=""
-IS_SYNC=false
 
 while [ $# -gt 0 ]; do
   case $1 in
   --help)
-    echo "Copy home directory files, typically between your home directory and a Git repo."
+    echo "Copy home directory files to a Git repo."
     echo "Usage: $0 [OPTIONS]"
     echo "Options:"
     echo " --help             Display this help message."
-    echo " --src <dir>        Specify source. Defaults to \$(pwd)."
-    echo " --dest <dir>       Specify destination."
+    echo " --git_repo <dir>   Path to the Git repo."
     echo " --all              Copy all files."
     echo " --message <msg>    Commit message. This is ignored if --sync isn't given. Defaults to 'DEFAULT'"
-    echo " --sync             This is only valid if the destination is a Git repo. After copying, commit, pull, and push."
     exit 0
     ;;
-  --src)
-    SRC=$2
-    shift
-    ;;
-  --dest)
-    DEST=$2
+  --git_repo)
+    GIT_REPO=$2
     shift
     ;;
   --all)
@@ -35,9 +27,6 @@ while [ $# -gt 0 ]; do
     MESSAGE=$2
     shift
     ;;
-  --sync)
-    IS_SYNC=true
-    ;;
   *)
     echo "Unknown flag: ${1}"
     exit 1
@@ -46,12 +35,8 @@ while [ $# -gt 0 ]; do
   shift
 done
 
-if [[ -z $SRC ]]; then
-  SRC="$(pwd)"
-fi
-
-if [[ -z $DEST ]]; then
-  echo "--dest is required."
+if [[ -z $GIT_REPO ]]; then
+  echo "--git_repo is required."
   exit 1
 fi
 
@@ -89,13 +74,11 @@ copy() {
   fi
 }
 
-copy "${SRC}" "${DEST}"
+copy ~ "${GIT_REPO}"
 
-if ${IS_SYNC}; then
-  git -C "${DEST}" add .
-  git -C "${DEST}" commit --all --message "${MESSAGE}"
-  git -C "${DEST}" pull --rebase
-  if ${IS_PUSH}; then
-    git -C "${DEST}" push
-  fi
-fi
+git -C "${GIT_REPO}" add .
+git -C "${GIT_REPO}" commit --all --message "${MESSAGE}"
+git -C "${GIT_REPO}" pull --rebase
+git -C "${GIT_REPO}" push
+
+copy "${GIT_REPO}" ~
