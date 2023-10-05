@@ -312,6 +312,7 @@
     p = push
     psu = push --set-upstream
     psuo = push --set-upstream origin
+    psuom = push --set-upstream origin master
     pf = push --force  # Push even if it results in a non-fast-forward merge.
     phrfm = push HEAD:refs/for/master
     pod = push origin --delete  # Delete all listed references from the remote repo.
@@ -390,6 +391,7 @@
     # remote
     y = remote  # Show remote branches.
     ya = remote add  # Add a new remote Git repo.
+    yao = remote add origin  # Add a new remote Git repo called 'origin'.
     yv = remote --verbose  # Show remotes with URLs.
     yw = remote show  # Show a remote.
     ywo = remote show origin  # Show the remote called 'origin'.

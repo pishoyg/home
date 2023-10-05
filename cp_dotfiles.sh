@@ -49,29 +49,36 @@ if [[ -z $MESSAGE ]]; then
   MESSAGE="DEFAULT"
 fi
 
+
 ### Main
-cp -r \
-  cp_dotfiles.sh \
-  .gitconfig \
-  .zshrc \
-  "${DEST}"
 
-cp -r \
-  .config/nvim/init.lua \
-  "${DEST}/.config/nvim/"
-
-if ${IS_ALL}; then
+copy() {
+  local DEST="${1}"
   cp -r \
-    .prompt \
-    .alias \
-    .profile \
-    .git-prompt.sh \
-    .bookstrap \
-    .vimrc \
-    .inputrc \
-    .replyrc \
+    cp_dotfiles.sh \
+    .gitconfig \
+    .zshrc \
     "${DEST}"
-fi
+
+  cp -r \
+    .config/nvim/init.lua \
+    "${DEST}/.config/nvim/"
+
+  if ${IS_ALL}; then
+    cp -r \
+      .prompt \
+      .alias \
+      .profile \
+      .git-prompt.sh \
+      .bookstrap \
+      .vimrc \
+      .inputrc \
+      .replyrc \
+      "${DEST}"
+  fi
+}
+
+copy "${DEST}"
 
 if ${IS_SYNC}; then
   git -C "${DEST}" add .
