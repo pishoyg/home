@@ -4,7 +4,7 @@ DEST=""
 IS_COMMIT=false
 IS_ALL=false
 IS_PUSH=false
-MESSAGE="DEFAULT"
+MESSAGE=""
 
 while [ $# -gt 0 ]; do
   case $1 in
@@ -16,7 +16,7 @@ while [ $# -gt 0 ]; do
     echo " --all          Copy all files."
     echo " --commit       Add all and create a commit. Only works if the destination is a Git repo."
     echo " --push         Besides creating a commit, push. This is ignored if --commit isn't given."
-    echo " --message      Commit message. This is ignored if --commit isn't given."
+    echo " --message      Commit message. This is ignored if --commit isn't given. Defaults to 'DEFAULT'"
     exit 0
     ;;
   --push)
@@ -47,6 +47,10 @@ done
 if [[ -z $DEST ]]; then
   echo "--dest is required."
   exit 1
+fi
+
+if [[ -z $MESSAGE ]]; then
+  MESSAGE="DEFAULT"
 fi
 
 ### Main
