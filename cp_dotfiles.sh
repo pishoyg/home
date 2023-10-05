@@ -8,6 +8,7 @@ while [ $# -gt 0 ]; do
   case $1 in
   --help)
     echo "Copy home directory files to a Git repo."
+    echo "Changes should be made in the home directory. Use this script to synchronize the home directory with the remote repo."
     echo "Usage: $0 [OPTIONS]"
     echo "Options:"
     echo " --help             Display this help message."
@@ -74,11 +75,14 @@ copy() {
   fi
 }
 
+# Copy files from the home directory to the Git directory.
 copy ~ "${GIT_REPO}"
 
+# Sync with the remote repo.
 git -C "${GIT_REPO}" add .
 git -C "${GIT_REPO}" commit --all --message "${MESSAGE}"
 git -C "${GIT_REPO}" pull --rebase
 git -C "${GIT_REPO}" push
 
+# Copy from the Git directory to the home directory.
 copy "${GIT_REPO}" ~
