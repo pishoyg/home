@@ -1,40 +1,35 @@
 ### Flags
 
 DEST=""
-IS_COMMIT=false
 IS_ALL=false
-IS_PUSH=false
 MESSAGE=""
+IS_SYNC=false
 
 while [ $# -gt 0 ]; do
   case $1 in
   --help)
     echo "Usage: $0 [OPTIONS]"
     echo "Options:"
-    echo " --help         Display this help message."
-    echo " --dest <dir>   Specify destination."
-    echo " --all          Copy all files."
-    echo " --commit       Add all and create a commit. Only works if the destination is a Git repo."
-    echo " --push         Besides creating a commit, push. This is ignored if --commit isn't given."
-    echo " --message      Commit message. This is ignored if --commit isn't given. Defaults to 'DEFAULT'"
+    echo " --help             Display this help message."
+    echo " --dest <dir>       Specify destination."
+    echo " --all              Copy all files."
+    echo " --message <msg>    Commit message. This is ignored if --sync isn't given. Defaults to 'DEFAULT'"
+    echo " --sync             This is only valid if the destination is a Git repo. After copying, commit, pull, and push."
     exit 0
-    ;;
-  --push)
-    IS_PUSH=true
-    ;;
-  --commit)
-    IS_COMMIT=true
-    ;;
-  --all)
-    IS_ALL=true
     ;;
   --dest)
     DEST=$2
     shift
     ;;
+  --all)
+    IS_ALL=true
+    ;;
   --message)
     MESSAGE=$2
     shift
+    ;;
+  --sync)
+    IS_SYNC=true
     ;;
   *)
     echo "Unknown flag: ${1}"
@@ -77,9 +72,10 @@ if ${IS_ALL}; then
     "${DEST}"
 fi
 
-if ${IS_COMMIT}; then
+if ${IS_SYNC}; then
   git -C "${DEST}" add .
   git -C "${DEST}" commit --all --message "${MESSAGE}"
+  git -C "${DEST}" pull --rebase
   if ${IS_PUSH}; then
     git -C "${DEST}" push
   fi
