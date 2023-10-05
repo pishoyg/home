@@ -7,14 +7,21 @@ MESSAGE=""
 while [ $# -gt 0 ]; do
   case $1 in
   --help)
-    echo "Copy home directory files to a Git repo."
-    echo "Changes should be made in the home directory. Use this script to synchronize the home directory with the remote repo."
+    echo "Synchronize home directory files using a Git repo."
+    echo "Changes should be made in \${HOME}, not \${GIT_REPO}. The script will perform the following steps:"
+    echo "1. Copy the most recent versions of files from \${HOME} to \${GIT_REPO}."
+    echo "2. Create a commit for the changes copied from \${HOME}."
+    echo "3. Perform a rebase-pull from the remote, thus synchronizing your recent changes with any changes that were made and pushed to the Git repo from some other machine."
+    echo "4. Perform a push, thus updating the remote with the local changes."
+    echo "5. Copy the rebase-pull result from the \${GIT_REPO} to \${HOME}."
+    echo "NOTE: A dirty \${GIT_REPO} will be simply overriden in step #1. This is why changes should be made in \${HOME} rather than in \${GIT_REPO}."
+    echo
     echo "Usage: $0 [OPTIONS]"
     echo "Options:"
     echo " --help             Display this help message."
     echo " --git_repo <dir>   Path to the Git repo."
     echo " --all              Copy all files."
-    echo " --message <msg>    Commit message. This is ignored if --sync isn't given. Defaults to 'DEFAULT'"
+    echo " --message <msg>    Commit message. Defaults to 'DEFAULT'"
     exit 0
     ;;
   --git_repo)
