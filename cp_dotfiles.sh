@@ -54,7 +54,8 @@ fi
 ### Main
 
 copy() {
-  local DEST="${1}"
+  local SRC="${1}"
+  local DEST="${2}"
   cp -r \
     "${SRC}"/cp_dotfiles.sh \
     "${SRC}"/.gitconfig \
@@ -79,7 +80,7 @@ copy() {
   fi
 }
 
-copy "${DEST}"
+copy "${SRC}" "${DEST}"
 
 if ${IS_SYNC}; then
   git -C "${DEST}" add .
