@@ -196,8 +196,10 @@ alias reboot='shutdown -r now'
 
 # Copy alias
 c() {
-    x=$(type "$1")
-    echo ${x/$1 is an alias for /} | pbcopy
+    x="$(type "$1")"
+    x="${x/$1 is an alias for /}"
+    echo "${x}" | pbcopy
+    echo "Copied '${x}'"
 }
 
 H="--help"
