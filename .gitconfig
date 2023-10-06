@@ -214,39 +214,44 @@
     # --author
     # --commiter
     l = log
+
+    ll = log --all
     lg = log --graph
     lo = log --oneline
     ld = log --decorate
-    lca = log --color=always
     lpo = log --pretty=oneline
     lps = log --pretty=short
     lpf = log --pretty=full
     lpr = log --pretty=fuller
+    lac = log --abbrev-commit
     lp = log --patch  # Show the differences introduced in each commit.
     ls = log --stat  # Show some abbreviated stats for each commit.
     lhist = log -S  # Show differences that change the number of occurrences of the specified string.
     lss = log --shortstat
     lno = log --name-only
     lns = log --name-status
-    lac = log --abbrev-commit
     lrd = log --relative-date
-    ll = log --all
+
     lgo = log --graph --oneline
     lod = log --oneline --decorate
     lgod = log --graph --oneline --decorate
-    lgoca = log --graph --oneline --color=always
-    lgodca = log --graph --oneline --decorate --color=always
     llgo = log --all --graph --oneline
     llod = log --all --oneline --decorate
     llgod = log --all --graph --oneline --decorate
-    llgoca = log --all --graph --oneline --color=always
-    llgodca = log --all --graph --oneline --decorate --color=always
+
+    tree = llgod
+
+    llgodp = log --all --graph --oneline --decorate --patch
+    llgods = log --all --graph --oneline --decorate --stat
+    llgodhist = log --all --graph --oneline --decorate -S
+    llgodss = log --all --graph --oneline --decorate --shortstat
+    llgodno = log --all --graph --oneline --decorate --name-only
+    llgodns = log --all --graph --oneline --decorate --name-status
+    llgodrd = log --all --graph --oneline --decorate --relative-date
 
     lf = reflog
     lfrd = reflog --relative-date
     lfl = reflog --all
-
-    tree = llgod
 
     # merge, mergetool
     m = merge  # Incorporate changes from the named commits (since the time their histories diverged from the current branch) into the current branch.
