@@ -15,6 +15,7 @@ while [ $# -gt 0 ]; do
     echo "4. Perform a push, thus updating the remote with the local changes."
     echo "5. Copy the rebase-pull result from the \${GIT_REPO} to \${HOME}."
     echo "NOTE: A dirty \${GIT_REPO} will be simply overriden in step #1. This is why changes should be made in \${HOME} rather than in \${GIT_REPO}."
+    echo "NOTE: You shouldn't run 'git fetch' in the repo on your own. Use this cript."
     echo
     echo "Usage: $0 [OPTIONS]"
     echo "Options:"
