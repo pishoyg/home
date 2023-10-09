@@ -85,18 +85,18 @@ copy() {
 
 main() {
 
-  echo ">>>>>>>>>> Copying files from the home directory to the Git directory."
+  echo ">>>>>>>>>> Copying files from \${HOME} to \${GIT_REPO}."
   copy ~ "${GIT_REPO}"
   git -C "${GIT_REPO}" add .
   git -C "${GIT_REPO}" commit --message "${MESSAGE}"
   echo
 
-  echo ">>>>>>>>>> Syncing the Git directory with the remote repo."
+  echo ">>>>>>>>>> Syncing \${GIT_REPO} with the remote repo."
   git -C "${GIT_REPO}" pull --rebase
   git -C "${GIT_REPO}" push
   echo
 
-  echo ">>>>>>>>>> Copying from the Git directory to the home directory."
+  echo ">>>>>>>>>> Copying from \${GIT_REPO} to \${HOME}."
   copy "${GIT_REPO}" ~
   echo
 }
