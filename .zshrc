@@ -194,6 +194,9 @@ alias python=python3
 alias pip=pip3
 alias reboot='shutdown -r now'
 
+alias xtrace='set -o xtrace'
+alias noxtrace='set +o xtrace'
+
 # Copy alias
 c() {
     x="$(type "$1")"

@@ -134,7 +134,7 @@
 
     sync = fogiom
 
-    syncall = "! CUR_DIR="$(pwd)" && cd ~/git_tree && for x in $(find . -name .git -type d -maxdepth 2); do cd $(dirname ${x}) && git pull --rebase && cd ~/git_tree; done && cd "${CUR_DIR}""
+    syncall = "! CUR_DIR="$(pwd)" && cd ~/git_tree && for x in $(find . -name .git -type d -maxdepth 2); do D=$(basename $(dirname ${x})) && cd ${D} && echo '\n>>>>>>>>>>' ${D} && git pull --rebase && cd ~/git_tree; done && cd "${CUR_DIR}""
 
     # rebase
     g = rebase
@@ -184,6 +184,12 @@
     iomns = diff origin/master --name-status
     ioms = diff origin/master --stat
     iomps = diff origin/master --patch-with-stat
+
+    ih1 = diff HEAD~1
+    ih2 = diff HEAD~2
+    ih3 = diff HEAD~3
+    ih4 = diff HEAD~4
+    ih5 = diff HEAD~5
 
     ini = diff --no-index  # Diff two files on the filesystem.
 
