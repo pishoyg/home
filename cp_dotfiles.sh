@@ -79,6 +79,7 @@ copy() {
       "${SRC}"/.vimrc \
       "${SRC}"/.inputrc \
       "${SRC}"/.replyrc \
+      "${SRC}"/.docs-gitconfig.txt \
       "${DEST}"
   fi
 }
