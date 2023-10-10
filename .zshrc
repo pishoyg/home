@@ -206,3 +206,5 @@ c() {
 }
 
 H="--help"
+C="pbcopy"
+L="less"
