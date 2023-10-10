@@ -86,20 +86,25 @@ copy() {
 
 main() {
 
-  echo "\n>>>>>>>>>> Copying files from ${HOME} to ${GIT_REPO}."
+  echo
+  echo ">>>>>>>>>> Copying files from ${HOME} to ${GIT_REPO}."
   copy ~ "${GIT_REPO}"
 
-  echo "\n>>>>>>>>>> Committing in ${GIT_REPO}."
+  echo
+  echo ">>>>>>>>>> Committing in ${GIT_REPO}."
   git -C "${GIT_REPO}" add .
   git -C "${GIT_REPO}" commit --message "${MESSAGE}"
 
-  echo "\n>>>>>>>>>> Pulling to ${GIT_REPO} from the remote repo."
+  echo
+  echo ">>>>>>>>>> Pulling to ${GIT_REPO} from the remote repo."
   git -C "${GIT_REPO}" pull --rebase
 
-  echo "\n>>>>>>>>>> Pushing from ${GIT_REPO} to the remote repo."
+  echo
+  echo ">>>>>>>>>> Pushing from ${GIT_REPO} to the remote repo."
   git -C "${GIT_REPO}" push
 
-  echo "\n>>>>>>>>>> Copying from ${GIT_REPO} to ${HOME}."
+  echo
+  echo ">>>>>>>>>> Copying from ${GIT_REPO} to ${HOME}."
   copy "${GIT_REPO}" ~
 }
 
