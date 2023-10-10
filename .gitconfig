@@ -132,7 +132,7 @@
     fogiom = "!git fetch origin && git rebase --interactive origin/master"
     fogom = "!git fetch origin && git rebase origin/master"
 
-    sync = fogiom
+    sync = pull --rebase
 
     syncall = "! CUR_DIR="$(pwd)" && cd ~/git_tree && for x in $(find . -name .git -type d -maxdepth 2); do D=$(basename $(dirname ${x})) && cd ${D} && echo '\n>>>>>>>>>>' ${D} && git pull --rebase && cd ~/git_tree; done && cd "${CUR_DIR}""
 
