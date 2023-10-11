@@ -10,6 +10,7 @@
 
 [checkout]
     defaultRemote = origin
+
 [gc]
     pruneExpire = "4 days ago"
 
@@ -43,6 +44,7 @@
     manyFiles = true
 
     experimental = true
+
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
