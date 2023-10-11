@@ -62,6 +62,8 @@
 
     alclmdp = ! git add . && git commit --all --message DEFAULT && git push
 
+    shove = alclmdp  # Shove, instead of pushing.
+
     # branch
     b = branch  # List all of the branches in your repo.
     bl = branch --all  # List remote as well as local branches.
@@ -104,7 +106,6 @@
     clm = commit --all --message
     clmd = commit --all --message DEFAULT
     clmdp = ! git commit --all --message DEFAULT && git push
-
 
     # clean
     d = clean
