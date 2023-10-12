@@ -8,14 +8,14 @@ while [ $# -gt 0 ]; do
   case $1 in
   --help)
     echo "Synchronize home directory files using a Git repo."
-    echo "Changes should be made in \${HOME}, not \${GIT_REPO}. The script will perform the following steps:"
+    echo "Updates to your home directory files should be made in \${HOME}, not \${GIT_REPO}. The script will perform the following steps:"
     echo "1. Copy the most recent versions of files from \${HOME} to \${GIT_REPO}."
     echo "2. Create a commit for the changes copied from \${HOME}."
     echo "3. Perform a rebase-pull from the remote, thus synchronizing your recent changes with any changes that were made and pushed to the Git repo from some other machine."
     echo "4. Perform a push, thus updating the remote with the local changes."
     echo "5. Copy the rebase-pull result from the \${GIT_REPO} to \${HOME}."
     echo "NOTE: A dirty \${GIT_REPO} will be simply overriden in step #1. This is why changes should be made in \${HOME} rather than in \${GIT_REPO}."
-    echo "NOTE: You shouldn't run 'git fetch' in the repo on your own. Use this cript."
+    echo "NOTE: You shouldn't run 'git fetch' in the repo on your own. Use this script."
     echo
     echo "Usage: $0 [OPTIONS]"
     echo "Options:"
