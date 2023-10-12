@@ -187,8 +187,8 @@ alias laf='ls -AF'
 alias ll='ls -lA'
 alias llf='ls -lAF'
 
-alias vim=nvim
-alias vi=vim
+alias vi=$(which vim)  # Typing `vi` invokes `vim`.
+alias vim=nvim  # Typing `vim` actually invokes `nvim`.
 alias g=git
 alias python=python3
 alias pip=pip3
