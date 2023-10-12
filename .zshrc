@@ -201,7 +201,7 @@ alias noxtrace='set +o xtrace'
 c() {
     x="$(type "$1")"
     x="${x/$1 is an alias for /}"
-    echo "${x}" | pbcopy
+    echo -n "${x}" | pbcopy
     echo "Copied '${x}'"
 }
 
