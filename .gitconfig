@@ -137,7 +137,7 @@
 
     sync = pull --rebase
 
-    syncall = "! CUR_DIR="$(pwd)" && cd ~/git_tree && for x in $(find . -name .git -type d -maxdepth 2); do D=$(basename $(dirname ${x})) && cd ${D} && echo '\n>>>>>>>>>>' ${D} && git pull --rebase && cd ~/git_tree; done && cd "${CUR_DIR}""
+    syncall = "! GIT_TREE="~/git_tree" && for D in $(find "${GIT_TREE}" -name .git -type d -maxdepth 2); do D=$(dirname ${D}) && echo '\n>>>>>>>>>>' ${D} && git -C "${D}" pull --rebase; done"  # This assumes that all your Git repos live under ${GIT_TREE}.
 
     # rebase
     g = rebase
