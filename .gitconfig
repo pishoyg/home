@@ -138,6 +138,7 @@
     sync = pull --rebase
 
     syncall = "! GIT_TREE="~/git_tree" && for D in $(find "${GIT_TREE}" -name .git -type d -maxdepth 2); do D=$(dirname ${D}) && echo '\n>>>>>>>>>>' ${D} && git -C "${D}" pull --rebase; done"  # This assumes that all your Git repos live under ${GIT_TREE}.
+    nofri = syncall  # "Ⲛⲟϥⲣⲓ" is how I say "hi" in Coptic!
 
     # rebase
     g = rebase
