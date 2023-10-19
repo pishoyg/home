@@ -208,3 +208,7 @@ c() {
 H="--help"
 C="pbcopy"
 L="less"
+
+hl() {
+    "$@" --help | less
+}

@@ -581,8 +581,8 @@ require("lspconfig").clangd.setup {
 }
 
 local set = vim.opt  -- set options
-set.tabstop = 4      -- Number of spaces tabs count for
-set.softtabstop = 4  -- Number of spaces that a <Tab> counts for
-set.shiftwidth = 4   -- Size of an indent
+set.tabstop = 2      -- Number of spaces tabs count for
+set.softtabstop = 2  -- Number of spaces that a <Tab> counts for
+set.shiftwidth = 2   -- Size of an indent
 set.expandtab = true -- Use spaces instead of tabs
 
