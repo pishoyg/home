@@ -205,10 +205,10 @@ c() {
     echo "Copied '${x}'"
 }
 
-H="--help"
 C="pbcopy"
-L="less"
 
+H="--help"
+L="less"
 hl() {
     "$@" --help | less
 }
