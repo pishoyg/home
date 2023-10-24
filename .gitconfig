@@ -195,6 +195,11 @@
     ih4 = diff HEAD~4
     ih5 = diff HEAD~5
 
+    ih12 = diff HEAD~1 HEAD~2
+    ih23 = diff HEAD~2 HEAD~3
+    ih34 = diff HEAD~3 HEAD~4
+    ih45 = diff HEAD~4 HEAD~5
+
     ini = diff --no-index  # Diff two files on the filesystem.
 
     ik = diff --check  # Warn if changes introduce conflict markers or whitespace errors.
@@ -236,7 +241,7 @@
     lac = log --abbrev-commit
     lp = log --patch  # Show the differences introduced in each commit.
     ls = log --stat  # Show some abbreviated stats for each commit.
-    lhist = log -S  # Show differences that change the number of occurrences of the specified string.
+    lstring = log -S  # Show differences that change the number of occurrences of the specified string.
     lss = log --shortstat
     lno = log --name-only
     lns = log --name-status
