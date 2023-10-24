@@ -189,6 +189,7 @@ alias llf='ls -lAF'
 
 alias vi=$(which vim)  # Typing `vi` invokes `vim`.
 alias vim=nvim  # Typing `vim` actually invokes `nvim`.
+alias vimr='vim -R'  # Open in read-only mode.
 alias g=git
 alias python=python3
 alias pip=pip3
