@@ -64,7 +64,7 @@
     alcal = ! git add . && git commit --all --amend
 
     shove = alclmdp  # Shove, instead of pushing.
-    smack = alcal  # Smack!
+    promise = alcal  # Promise, instead of comitting.
 
     # branch
     b = branch  # List all of the branches in your repo.
