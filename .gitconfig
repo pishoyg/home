@@ -143,7 +143,7 @@
     # rebase
     g = rebase
     ga = rebase --abort
-    gc = rebase --continue
+    ge = rebase --continue
     gi = rebase --interactive
     giom = rebase --interactive origin/master
     gom = rebase origin/master
@@ -195,10 +195,10 @@
     ih4 = diff HEAD~4
     ih5 = diff HEAD~5
 
-    ih12 = diff HEAD~1 HEAD~2
-    ih23 = diff HEAD~2 HEAD~3
-    ih34 = diff HEAD~3 HEAD~4
-    ih45 = diff HEAD~4 HEAD~5
+    ih21 = diff HEAD~2 HEAD~1
+    ih32 = diff HEAD~3 HEAD~2
+    ih43 = diff HEAD~4 HEAD~3
+    ih54 = diff HEAD~5 HEAD~4
 
     ini = diff --no-index  # Diff two files on the filesystem.
 
@@ -271,7 +271,7 @@
     # merge, mergetool
     m = merge  # Incorporate changes from the named commits (since the time their histories diverged from the current branch) into the current branch.
     ma = merge --abort  # Abort the current conflict resolution process, and try to reconstruct the pre-merge state.
-    mc = merge --continue
+    me = merge --continue
     mq = merge --quit  # Forget about the current merge in progress. Leave the index and the working tree as-is.
 
     mt = mergetool
@@ -392,7 +392,7 @@
     vm = revert --mainline  # Revert a merge commit, specifying the parent number.
     vne = revert --no-edit  # Revert a commit, without opening the commit message editor.
     vnc = revert --no-commit  # Revert a commit, only applying the changes to the worktree and the index without creating a new commit.
-    vc = revert --continue
+    ve = revert --continue
     vs = revert --skip
     vq = revert --quit
     va = revert --abort
