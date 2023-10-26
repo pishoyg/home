@@ -58,10 +58,10 @@
 
     # add
     a = add
-    al = add .
+    al = add --all
 
-    alclmdp = ! git add . && git commit --all --message DEFAULT && git push
-    alcal = ! git add . && git commit --all --amend
+    alclmdp = ! git add --all && git commit --all --message DEFAULT && git push
+    alcal = ! git add --all && git commit --all --amend
 
     shove = alclmdp  # Shove, instead of pushing.
     promise = alcal  # Promise, instead of comitting.
