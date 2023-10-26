@@ -61,8 +61,10 @@
     al = add .
 
     alclmdp = ! git add . && git commit --all --message DEFAULT && git push
+    alcal = ! git add . && git commit --all --amend
 
     shove = alclmdp  # Shove, instead of pushing.
+    smack = alcal  # Smack!
 
     # branch
     b = branch  # List all of the branches in your repo.
