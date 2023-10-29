@@ -198,6 +198,8 @@ alias reboot='shutdown -r now'
 alias xtrace='set -o xtrace'
 alias noxtrace='set +o xtrace'
 
+alias g++20='g++ -std=c++20'
+
 # Copy alias
 c() {
     x="$(type "$1")"
