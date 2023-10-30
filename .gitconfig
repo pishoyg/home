@@ -62,9 +62,11 @@
 
     alclmdp = ! git add --all && git commit --all --message DEFAULT && git push
     alcal = ! git add --all && git commit --all --amend
+    alcalp = ! git add --all && git commit --all --amend && git push
 
-    shove = alclmdp  # Shove, instead of pushing.
-    promise = alcal  # Promise, instead of comitting.
+    amend = alcal
+    thrust = alcalp  # Thrust, instead of pushing. Add all, amend the commit with all, and push.
+    shove = alclmdp  # Shove, instead of pushing. Add all, create a commit with all and a default message, and push.
 
     # branch
     b = branch  # List all of the branches in your repo.
@@ -144,13 +146,20 @@
 
     # rebase
     g = rebase
+
+    gi = rebase --interactive
+
+    gio = rebase --interactive --onto
+
+    giom = rebase --interactive origin/master
+    gih2 = rebase --interactive HEAD~2
+    gih3 = rebase --interactive HEAD~3
+    gih4 = rebase --interactive HEAD~4
+    gih5 = rebase --interactive HEAD~5
+
     ga = rebase --abort
     ge = rebase --continue
-    gi = rebase --interactive
-    giom = rebase --interactive origin/master
-    gom = rebase origin/master
-
-    go = rebase --onto
+    get = rebase --edit-todo
 
     # stash
     h = stash
