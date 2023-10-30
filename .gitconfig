@@ -60,13 +60,13 @@
     a = add
     al = add --all
 
-    alclmdp = ! git add --all && git commit --all --message DEFAULT && git push
-    alcal = ! git add --all && git commit --all --amend
-    alcalp = ! git add --all && git commit --all --amend && git push
+    alcmdp = ! git add --all && git commit --message DEFAULT && git push
+    alca = ! git add --all && git commit --amend
+    alcap = ! git add --all && git commit --amend && git push
 
-    amend = alcal
-    thrust = alcalp  # Thrust, instead of pushing. Add all, amend the commit with all, and push.
-    shove = alclmdp  # Shove, instead of pushing. Add all, create a commit with all and a default message, and push.
+    amend = alca
+    thrust = alcap  # Thrust, instead of pushing. Add all, amend the commit, and push.
+    shove = alcmdp  # Shove, instead of pushing. Add all, create a commit with a default message, and push.
 
     # branch
     b = branch  # List all of the branches in your repo.
