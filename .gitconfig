@@ -135,6 +135,7 @@
 
     # clone
     e = clone
+    ed1 = clone --depth=1
 
     # fetch
     f = fetch
