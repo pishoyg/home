@@ -60,13 +60,10 @@
     a = add
     al = add --all
 
+    alc = ! git add --all && git commit
     alcmdp = ! git add --all && git commit --message DEFAULT && git push
     alca = ! git add --all && git commit --amend
     alcap = ! git add --all && git commit --amend && git push
-
-    amend = alca
-    thrust = alcap  # Thrust, instead of pushing. Add all, amend the commit, and push.
-    shove = alcmdp  # Shove, instead of pushing. Add all, create a commit with a default message, and push.
 
     # branch
     b = branch  # List all of the branches in your repo.
@@ -139,10 +136,9 @@
     fogiom = "!git fetch origin && git rebase --interactive origin/master"
     fogom = "!git fetch origin && git rebase origin/master"
 
-    sync = pull --rebase
+    sync = pull --rebase  # nonconforming
 
-    syncall = "! GIT_TREE="~/git_tree" && for D in $(find "${GIT_TREE}" -name .git -type d -maxdepth 2); do D=$(dirname ${D}) && echo '\n>>>>>>>>>>' ${D} && git -C "${D}" pull --rebase; done"  # This assumes that all your Git repos live under ${GIT_TREE}.
-    nofri = syncall  # "Ⲛⲟϥⲣⲓ" is how I say "hi" in Coptic!
+    syncall = "! GIT_TREE="~/git_tree" && for D in $(find "${GIT_TREE}" -name .git -type d -maxdepth 2); do D=$(dirname ${D}) && echo '\n>>>>>>>>>>' ${D} && git -C "${D}" pull --rebase; done"  # nonconforming  # This assumes that all your Git repos live under ${GIT_TREE}.
 
     # rebase
     g = rebase
@@ -312,18 +308,18 @@
     ngrasga = "! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / | grep \"^$1 = \" #" # Grep alias.
     ngrasgc = "! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / | grep \" = $1\\b\" #" # Grep command.
 
-    aliasl = ngras
-    alias = ngrasga
-    aliases = ngrasgc
-
     ncat = "! cat ~/.gitconfig"
     ncats = "! cat ~/.gitconfig | sed -e 's/^[ \t]*//'"
     ncatsg = "! cat ~/.gitconfig | sed -e 's/^[ \t]*//' | grep"
     ncatsga = "! cat ~/.gitconfig | sed -e 's/^[ \t]*//' | grep \"^$1 = \" #"
     ncatsgc = "! cat ~/.gitconfig | sed -e 's/^[ \t]*//' | grep \" = $1\\b\" #"
 
-    doc = ncatsga
-    docs = ncatsgc
+    aliasl = ngras  # nonconforming
+    alias = ngrasga  # nonconforming
+    aliases = ngrasgc  # nonconforming
+
+    doc = ncatsga  # nonconforming
+    docs = ncatsgc  # nonconforming
 
     # checkout
     o = checkout  # Given a branch name, switch branches, carrying the index and worktree along.
