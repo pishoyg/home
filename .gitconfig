@@ -64,6 +64,8 @@
     alcmdp = ! git add --all && git commit --message DEFAULT && git push
     alca = ! git add --all && git commit --amend
     alcap = ! git add --all && git commit --amend && git push
+    alcanep = ! git add --all && git commit --no-edit --amend && git push
+    alcanepf = ! git add --all && git commit --no-edit --amend && git push --force
 
     # branch
     b = branch  # List all of the branches in your repo.
@@ -99,6 +101,7 @@
     # commit
     c = commit  # Commit.
     ca = commit --amend  # Amend the last commit.
+    cane = commit --amend --no-edit  # Amend the last commit without editing the message.
     cl = commit --all  # Commit, automatically staging files that have been modified and deleted (but new files you have not told Git about are not affected).
     cm = commit --message  # Commit, supplying the message on the commandline.
     clrm = commit --all --reuse-message  # Commit, reusing the message from another commit.
@@ -106,6 +109,11 @@
     cal = commit --amend --all
     clm = commit --all --message
     clmd = commit --all --message DEFAULT
+    cap = ! git commit --amend && git push
+    canep = ! git commit --amend --no-edit && git push
+    capf = ! git commit --amend && git push --force
+    canepf = ! git commit --amend --no-edit && git push --force
+    calp = ! git commit --amend --all && git push
     clmdp = ! git commit --all --message DEFAULT && git push
 
     # clean
@@ -135,8 +143,6 @@
     fol = fetch origin --all
     fogiom = "!git fetch origin && git rebase --interactive origin/master"
     fogom = "!git fetch origin && git rebase origin/master"
-
-    sync = pull --rebase  # nonconforming
 
     syncall = "! GIT_TREE="~/git_tree" && for D in $(find "${GIT_TREE}" -name .git -type d -maxdepth 2); do D=$(dirname ${D}) && echo '\n>>>>>>>>>>' ${D} && git -C "${D}" pull --rebase; done"  # nonconforming  # This assumes that all your Git repos live under ${GIT_TREE}.
 
@@ -348,7 +354,11 @@
 
     # pull
     q = pull
+    qf = pull --force
     qr = pull --rebase
+    qri = pull --rebase --interactive
+    qrf = pull --rebase --force
+    qrif = pull --rebase --force --interactive
 
     # reset
     r = reset  # Reset index to match HEAD, but leave the worktree alone.
