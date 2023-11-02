@@ -61,6 +61,7 @@
     al = add --all
 
     alc = ! git add --all && git commit
+    alcm = ! git add --all && git commit --message
     alcmdp = ! git add --all && git commit --message DEFAULT && git push
     alca = ! git add --all && git commit --amend
     alcap = ! git add --all && git commit --amend && git push
