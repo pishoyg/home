@@ -142,15 +142,21 @@
 
     # fetch
     f = fetch
+
     fl = fetch --all
     fo = fetch origin
     fol = fetch origin --all
+
     fogiom = "!git fetch origin && git rebase --interactive origin/master"
+    fogiomp = "!git fetch origin && git rebase --interactive origin/master" && git push
+    fogiompf = "!git fetch origin && git rebase --interactive origin/master" && git push --force
     fogiot = "!git fetch origin && git rebase --interactive origin/trunk"
+    fogiotp = "!git fetch origin && git rebase --interactive origin/trunk" && git push
+    fogiotpf = "!git fetch origin && git rebase --interactive origin/trunk" && git push --force
     fogom = "!git fetch origin && git rebase origin/master"
     fogot = "!git fetch origin && git rebase origin/trunk"
 
-    syncall = "! GIT_TREE="~/git_tree" && for D in $(find "${GIT_TREE}" -name .git -type d -maxdepth 2); do D=$(dirname ${D}) && echo '\n>>>>>>>>>>' ${D} && git -C "${D}" pull --rebase; done"  # nonconforming  # This assumes that all your Git repos live under ${GIT_TREE}.
+    syncall = "! GIT_TREE="~/git_tree" && for D in $(find "${GIT_TREE}" -name .git -type d -maxdepth 2); do D=$(dirname ${D}) && echo '\n>>>>>>>>>>' ${D} && git -C "${D}" pull --rebase=interactive; done"  # nonconforming  # This assumes that all your Git repos live under ${GIT_TREE}.
 
     # rebase
     g = rebase
@@ -375,9 +381,9 @@
     q = pull
     qf = pull --force
     qr = pull --rebase
-    qri = pull --rebase --interactive
+    qri = pull --rebase=interactive
     qrf = pull --rebase --force
-    qrif = pull --rebase --force --interactive
+    qrif = pull --rebase=interactive --force
 
     # reset
     r = reset  # Reset index to match HEAD, but leave the worktree alone.
