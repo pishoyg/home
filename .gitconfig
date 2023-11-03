@@ -159,6 +159,8 @@
 
     gio = rebase --interactive --onto
 
+    grcp = rebase --reapply-cherry-picks
+
     giom = rebase --interactive origin/master
     giot = rebase --interactive origin/trunk
     gih2 = rebase --interactive HEAD~2
@@ -168,6 +170,7 @@
 
     ga = rebase --abort
     ge = rebase --continue
+    gs = rebase --skip
     get = rebase --edit-todo
 
     # stash
