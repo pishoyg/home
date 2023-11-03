@@ -88,6 +88,7 @@
 
     bsut = branch --set-upstream-to  # Set the upstream for a branch.
     bsutom = branch --set-upstream-to origin/master  # Set the upstream for a branch.
+    bsutot = branch --set-upstream-to origin/trunk  # Set the upstream for a branch.
 
     bz = branch --move  # Rename a branch.
     bzf = branch --move --force  # Force-rename a branch.
@@ -145,7 +146,9 @@
     fo = fetch origin
     fol = fetch origin --all
     fogiom = "!git fetch origin && git rebase --interactive origin/master"
+    fogiot = "!git fetch origin && git rebase --interactive origin/trunk"
     fogom = "!git fetch origin && git rebase origin/master"
+    fogot = "!git fetch origin && git rebase origin/trunk"
 
     syncall = "! GIT_TREE="~/git_tree" && for D in $(find "${GIT_TREE}" -name .git -type d -maxdepth 2); do D=$(dirname ${D}) && echo '\n>>>>>>>>>>' ${D} && git -C "${D}" pull --rebase; done"  # nonconforming  # This assumes that all your Git repos live under ${GIT_TREE}.
 
@@ -157,6 +160,7 @@
     gio = rebase --interactive --onto
 
     giom = rebase --interactive origin/master
+    giot = rebase --interactive origin/trunk
     gih2 = rebase --interactive HEAD~2
     gih3 = rebase --interactive HEAD~3
     gih4 = rebase --interactive HEAD~4
@@ -204,6 +208,12 @@
     iomns = diff origin/master --name-status
     ioms = diff origin/master --stat
     iomps = diff origin/master --patch-with-stat
+
+    iot = diff origin/trunk  # Diff the worktree and origin/trunk.
+    iotno = diff origin/trunk --name-only
+    iotns = diff origin/trunk --name-status
+    iots = diff origin/trunk --stat
+    iotps = diff origin/trunk --patch-with-stat
 
     ih1 = diff HEAD~1
     ih2 = diff HEAD~2
@@ -335,6 +345,7 @@
     oh = checkout HEAD
     oh1 = checkout HEAD^1
     oom = checkout origin/master
+    oot = checkout origin/trunk
 
     o = checkout  # Given a file name, update the worktree to match the index. This is equivalent to `restore`.
     o- = checkout --  # Update the worktree to match the index. This is equivalent to `restore`.
@@ -349,8 +360,10 @@
     psu = push --set-upstream
     psuo = push --set-upstream origin
     psuom = push --set-upstream origin master
+    psuot = push --set-upstream origin trunk
     pf = push --force  # Push even if it results in a non-fast-forward merge.
     phrfm = push HEAD:refs/for/master
+    phrft = push HEAD:refs/for/trunk
     pod = push origin --delete  # Delete all listed references from the remote repo.
     pl = push --all  # Push all local branches to the remote repo.
     pt = push --tags  # Push all local tags to the remote repo.
