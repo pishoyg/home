@@ -1,3 +1,8 @@
 ci: pipeline ci
 co: mr checkout
+
 mrcprsbfyne: mr create --push --remove-source-branch --fill --yes --no-editor
+mail: mr create --push --remove-source-branch --fill --yes --no-editor
+
+mrmrsbamy: mr merge --remove-source-branch --auto-merge --yes
+submit: mr merge --remove-source-branch --auto-merge --yes
