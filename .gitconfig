@@ -400,6 +400,8 @@
     rk = reset --keep
 
     rhh = reset --hard HEAD
+    rhom = reset --hard origin/master
+    rhot = reset --hard origin/trunk
 
     # switch
     s = switch  # Switch to a branch.
