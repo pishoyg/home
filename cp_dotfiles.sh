@@ -95,7 +95,7 @@ main() {
   copy ~ "${GIT_REPO}"
 
   echo $'\n'">>>>>>>>>> Committing in ${GIT_REPO}."
-  git -C "${GIT_REPO}" add .
+  git -C "${GIT_REPO}" add --all
   git -C "${GIT_REPO}" commit --message "${MESSAGE}"
 
   echo $'\n'">>>>>>>>>> Pulling to ${GIT_REPO} from the remote repo."
