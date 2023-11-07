@@ -76,12 +76,12 @@
     bvv = branch --verbose --verbose  # List with even more verbosity.
     blv = branch --all --verbose  # List remote as well as local branches with verbosity.
     blvv = branch --all --verbose --verbose  # List remote as well as local branches with even more verbosity.
-    bm = branch --merged  # List the branches that you have merged into the branch you’re currently on.
-    bmv = branch --merged --verbose  # List the branches that you have merged into the branch you’re currently on with verbosity.
-    bmvv = branch --merged --verbose --verbose  # List the branches that you have merged into the branch you’re currently on with even more verbosity.
-    bnm = branch --no-merged  # List the branches that you have not yet merged into the branch you’re currently on.
-    bnmv = branch --no-merged --verbose  # List the branches that you have not yet merged into the branch you’re currently on with verbosity.
-    bnmvv = branch --no-merged --verbose --verbose  # List the branches that you have not yet merged into the branch you’re currently on with even more verbosity.
+    bj = branch --merged  # List the branches that you have merged into the branch you’re currently on.
+    bjv = branch --merged --verbose  # List the branches that you have merged into the branch you’re currently on with verbosity.
+    bjvv = branch --merged --verbose --verbose  # List the branches that you have merged into the branch you’re currently on with even more verbosity.
+    bnj = branch --no-merged  # List the branches that you have not yet merged into the branch you’re currently on.
+    bnjv = branch --no-merged --verbose  # List the branches that you have not yet merged into the branch you’re currently on with verbosity.
+    bnjvv = branch --no-merged --verbose --verbose  # List the branches that you have not yet merged into the branch you’re currently on with even more verbosity.
 
     b = branch  # Given a name, create a branch with that name.
     bf = branch --force  # Force-create a branch.
@@ -351,16 +351,19 @@
 
     # checkout
     o = checkout  # Given a branch name, switch branches, carrying the index and worktree along.
+
     oh = checkout HEAD
     oh1 = checkout HEAD^1
+    om = checkout master
     oom = checkout origin/master
+    ot = checkout trunk
     oot = checkout origin/trunk
 
     o = checkout  # Given a file name, update the worktree to match the index. This is equivalent to `restore`.
     o- = checkout --  # Update the worktree to match the index. This is equivalent to `restore`.
     oo = checkout --ours
-    ot = checkout --theirs
-    om = checkout --merge
+    oz = checkout --theirs  # Egyptians don't use the voice 'th'. They usually replace it with a 'z' or an 's'. A 'z' in this case. Avoid conflict with `checkout trunk`.
+    oj = checkout --merge  # Avoid conflict with `checkout master`.
 
     ob = checkout -b  # Create a new branch.
 
@@ -396,7 +399,7 @@
     rs = reset --soft  # Given a commit, reset HEAD to that commit, leaving the index and worktree alone.
     rsh1 = reset --soft HEAD^  # Reset HEAD to HEAD's first parent, leaving the index and worktree alone. This essentially undoes a `commit`.
     rx = reset --mixed  # Reset index, but leave the worktree alone. This is default.
-    rg = reset --merge
+    rj = reset --merge
     rk = reset --keep
 
     rhh = reset --hard HEAD
@@ -409,7 +412,7 @@
     sfc = switch --force-create  # Force-create a branch.
     sf = switch --force  # Force-switch to a branch.
     sdc = switch --discard-changes  # Switch to a branch, discarding changes in the worktree and index.
-    sm = switch --merge  # Switch to a branch, resolving conflicts in case you have local modifications to one or more files that are different between the current branch and the branch to which you are switching.
+    sj = switch --merge  # Switch to a branch, resolving conflicts in case you have local modifications to one or more files that are different between the current branch and the branch to which you are switching.
     s- = switch -  # Switch to the last branch switched to.
     sd = switch --detach  # Switch to a commit for inspection and discardable experiments.
 
@@ -429,7 +432,7 @@
 
     uo = restore --ours
     ut = restore --theirs
-    um = restore --merge
+    uj = restore --merge
 
     # revert
     v = revert  # Create a commit that reverts the work done by an earlier commit.
