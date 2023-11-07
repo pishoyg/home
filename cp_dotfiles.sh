@@ -69,6 +69,11 @@ copy() {
     "${SRC}"/.config/nvim/init.lua \
     "${DEST}/.config/nvim/"
 
+  cp -r \
+    "${SRC}"/.config/glab-cli/aliases.yml \
+    "${SRC}"/.config/glab-cli/config.yml \
+    "${DEST}/.config/glab-cli/"
+
   if ${IS_ALL}; then
     cp -r \
       "${SRC}"/.prompt \
