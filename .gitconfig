@@ -359,7 +359,9 @@
     ot = checkout trunk
     oot = checkout origin/trunk
 
+    omfo = ! git checkout master && git fetch origin
     omfogiom = ! git checkout master && git fetch origin && git rebase --interactive origin/master
+    otfo = ! git checkout trunk && git fetch origin
     otfogiot = ! git checkout trunk && git fetch origin && git rebase --interactive origin/trunk
 
     o = checkout  # Given a file name, update the worktree to match the index. This is equivalent to `restore`.
