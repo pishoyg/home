@@ -97,6 +97,7 @@
     bcf = branch --copy --force  # Force-copy a branch.
 
     bd = branch --delete  # Delete a branch.
+    brd = branch --remote --delete  # Delete a remote branch.
     bdf = branch --delete --force  # Force-delete a branch.
 
     bt = branch --track  # Track a remote branch.
@@ -150,9 +151,14 @@
     fogiom = "!git fetch origin && git rebase --interactive origin/master"
     fogiomp = "!git fetch origin && git rebase --interactive origin/master" && git push
     fogiompf = "!git fetch origin && git rebase --interactive origin/master" && git push --force
+    fogiomom = "!git fetch origin && git rebase --interactive origin/master" && git checkout master
+    fogiomomq = "!git fetch origin && git rebase --interactive origin/master" && git checkout master && git pull
     fogiot = "!git fetch origin && git rebase --interactive origin/trunk"
     fogiotp = "!git fetch origin && git rebase --interactive origin/trunk" && git push
     fogiotpf = "!git fetch origin && git rebase --interactive origin/trunk" && git push --force
+    fogiotot = "!git fetch origin && git rebase --interactive origin/trunk" && git checkout trunk
+    fogiototq = "!git fetch origin && git rebase --interactive origin/trunk" && git checkout trunk && git pull
+
     fogom = "!git fetch origin && git rebase origin/master"
     fogot = "!git fetch origin && git rebase origin/trunk"
 
