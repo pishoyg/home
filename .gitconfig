@@ -65,6 +65,7 @@
     alcmdp = ! git add --all && git commit --message DEFAULT && git push
     alca = ! git add --all && git commit --amend
     alcap = ! git add --all && git commit --amend && git push
+    alcapf = ! git add --all && git commit --amend && git push --force
     alcane = ! git add --all && git commit --no-edit --amend
     alcanep = ! git add --all && git commit --no-edit --amend && git push
     alcanepf = ! git add --all && git commit --no-edit --amend && git push --force
