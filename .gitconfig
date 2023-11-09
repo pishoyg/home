@@ -154,11 +154,14 @@
     fogiompf = "!git fetch origin && git rebase --interactive origin/master" && git push --force
     fogiomom = "!git fetch origin && git rebase --interactive origin/master" && git checkout master
     fogiomomq = "!git fetch origin && git rebase --interactive origin/master" && git checkout master && git pull
+    fogomomq = "!git fetch origin && git rebase origin/master" && git checkout master && git pull
+
     fogiot = "!git fetch origin && git rebase --interactive origin/trunk"
     fogiotp = "!git fetch origin && git rebase --interactive origin/trunk" && git push
     fogiotpf = "!git fetch origin && git rebase --interactive origin/trunk" && git push --force
     fogiotot = "!git fetch origin && git rebase --interactive origin/trunk" && git checkout trunk
     fogiototq = "!git fetch origin && git rebase --interactive origin/trunk" && git checkout trunk && git pull
+    fogototq = "!git fetch origin && git rebase origin/trunk" && git checkout trunk && git pull
 
     fogom = "!git fetch origin && git rebase origin/master"
     fogot = "!git fetch origin && git rebase origin/trunk"
