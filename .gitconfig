@@ -169,13 +169,16 @@
     syncall = "! GIT_TREE="~/git_tree" && for D in $(find "${GIT_TREE}" -name .git -type d -maxdepth 2); do D=$(dirname ${D}) && echo '\n>>>>>>>>>>' ${D} && git -C "${D}" pull --rebase=interactive; done"  # nonconforming  # This assumes that all your Git repos live under ${GIT_TREE}.
 
     # rebase
-    g = rebase
+    g = rebase  # Given a <base>, rebase the current branch onto <base>. <base> can be a commit ID, branch name, a tag, or a relative reference to HEAD.
 
     gi = rebase --interactive
 
     gio = rebase --interactive --onto
 
     grcp = rebase --reapply-cherry-picks
+
+    gom = rebase origin/master
+    got = rebase origin/trunk
 
     giom = rebase --interactive origin/master
     giot = rebase --interactive origin/trunk
@@ -286,6 +289,7 @@
     lac = log --abbrev-commit
     lp = log --patch  # Show the differences introduced in each commit.
     ls = log --stat  # Show some abbreviated stats for each commit.
+    l- = log --  # Given a file, only display commits that have the specified file.
     lstring = log -S  # Show differences that change the number of occurrences of the specified string.
     lss = log --shortstat
     lno = log --name-only
@@ -299,7 +303,7 @@
     llod = log --all --oneline --decorate
     llgod = log --all --graph --oneline --decorate
 
-    tree = llgod
+    tree = llgod  # nonconforming
 
     llgodp = log --all --graph --oneline --decorate --patch
     llgods = log --all --graph --oneline --decorate --stat
@@ -319,14 +323,14 @@
     me = merge --continue
     mq = merge --quit  # Forget about the current merge in progress. Leave the index and the working tree as-is.
 
-    mt = mergetool
-
     ms = merge --squash
     mff = merge --ff  # Perform a fast-forward merge if the merged-in history is already a descendant of the current history. This is default.
     mnff = merge --no-ff  # Create a merge-commit even if the merged-in history is already a descendant of the current history.
     mffo = merge --ff-only  # Perform a fast-forward merge if merging into a descendant of the current branch, or fail.
 
     mu = merge @{upstream}
+
+    mt = mergetool
 
     status = status  # In conflict resolution, show current status.
 
@@ -337,7 +341,7 @@
     # config
     n = config
     ng = config --global
-    nge = config --global --edit
+    nge = config --global --edit  # Open the global configuration file in a text editor for manual editing.
     nl = config --list
 
     ngra = "! git config --get-regexp ^alias\\."
@@ -393,10 +397,11 @@
     phrft = push HEAD:refs/for/trunk
     pod = push origin --delete  # Delete all listed references from the remote repo.
     pl = push --all  # Push all local branches to the remote repo.
+    plf = push --all --force  # Force-push all local branches to the remote repo.
     pt = push --tags  # Push all local tags to the remote repo.
 
     # pull
-    q = pull
+    q = pull  # Given a remote, fetch the specified remote’s copy of current branch and immediately merge it into the local copy.
     qf = pull --force
     qr = pull --rebase
     qri = pull --rebase=interactive
