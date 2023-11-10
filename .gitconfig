@@ -103,6 +103,12 @@
 
     bt = branch --track  # Track a remote branch.
 
+    bwc = branch --show-current
+
+    bwcfogototqbd = ! CUR="$(git branch --show-current)" && git fetch origin && git rebase origin/trunk && git checkout trunk && git pull && git branch --delete "${CUR}"
+
+    bwcfogomomqbd = ! CUR="$(git branch --show-current)" && git fetch origin && git rebase origin/master && git checkout master && git pull && git branch --delete "${CUR}"
+
     # commit
     c = commit  # Commit.
     ca = commit --amend  # Amend the last commit.
@@ -149,31 +155,31 @@
     fo = fetch origin
     fol = fetch origin --all
 
-    fogiom = "!git fetch origin && git rebase --interactive origin/master"
-    fogiomp = "!git fetch origin && git rebase --interactive origin/master" && git push
-    fogiompf = "!git fetch origin && git rebase --interactive origin/master" && git push --force
-    fogiomom = "!git fetch origin && git rebase --interactive origin/master" && git checkout master
-    fogiomomq = "!git fetch origin && git rebase --interactive origin/master" && git checkout master && git pull
+    fogiom = !git fetch origin && git rebase --interactive origin/master
+    fogiomp = !git fetch origin && git rebase --interactive origin/master && git push
+    fogiompf = !git fetch origin && git rebase --interactive origin/master && git push --force
+    fogiomom = !git fetch origin && git rebase --interactive origin/master && git checkout master
+    fogiomomq = !git fetch origin && git rebase --interactive origin/master && git checkout master && git pull
 
-    fogiot = "!git fetch origin && git rebase --interactive origin/trunk"
-    fogiotp = "!git fetch origin && git rebase --interactive origin/trunk" && git push
-    fogiotpf = "!git fetch origin && git rebase --interactive origin/trunk" && git push --force
-    fogiotot = "!git fetch origin && git rebase --interactive origin/trunk" && git checkout trunk
-    fogiototq = "!git fetch origin && git rebase --interactive origin/trunk" && git checkout trunk && git pull
+    fogiot = !git fetch origin && git rebase --interactive origin/trunk
+    fogiotp = !git fetch origin && git rebase --interactive origin/trunk && git push
+    fogiotpf = !git fetch origin && git rebase --interactive origin/trunk && git push --force
+    fogiotot = !git fetch origin && git rebase --interactive origin/trunk && git checkout trunk
+    fogiototq = !git fetch origin && git rebase --interactive origin/trunk && git checkout trunk && git pull
 
-    fogom = "!git fetch origin && git rebase origin/master"
-    fogomp = "!git fetch origin && git rebase origin/master" && git push
-    fogompf = "!git fetch origin && git rebase origin/master" && git push --force
-    fogomom = "!git fetch origin && git rebase origin/master" && git checkout master
-    fogomomq = "!git fetch origin && git rebase origin/master" && git checkout master && git pull
+    fogom = !git fetch origin && git rebase origin/master
+    fogomp = !git fetch origin && git rebase origin/master && git push
+    fogompf = !git fetch origin && git rebase origin/master && git push --force
+    fogomom = !git fetch origin && git rebase origin/master && git checkout master
+    fogomomq = !git fetch origin && git rebase origin/master && git checkout master && git pull
 
-    fogot = "!git fetch origin && git rebase origin/trunk"
-    fogotp = "!git fetch origin && git rebase origin/trunk" && git push
-    fogotpf = "!git fetch origin && git rebase origin/trunk" && git push --force
-    fogotot = "!git fetch origin && git rebase origin/trunk" && git checkout trunk
-    fogototq = "!git fetch origin && git rebase origin/trunk" && git checkout trunk && git pull
+    fogot = !git fetch origin && git rebase origin/trunk
+    fogotp = !git fetch origin && git rebase origin/trunk && git push
+    fogotpf = !git fetch origin && git rebase origin/trunk && git push --force
+    fogotot = !git fetch origin && git rebase origin/trunk && git checkout trunk
+    fogototq = !git fetch origin && git rebase origin/trunk && git checkout trunk && git pull
 
-    syncall = "! GIT_TREE="~/git_tree" && for D in $(find "${GIT_TREE}" -name .git -type d -maxdepth 2); do D=$(dirname ${D}) && echo '\n>>>>>>>>>>' ${D} && git -C "${D}" pull --rebase=interactive; done"  # nonconforming  # This assumes that all your Git repos live under ${GIT_TREE}.
+    syncall = ! GIT_TREE="~/git_tree" && for D in $(find "${GIT_TREE}" -name .git -type d -maxdepth 2); do D=$(dirname ${D}) && echo '\n>>>>>>>>>>' ${D} && git -C "${D}" pull --rebase=interactive; done  # nonconforming  # This assumes that all your Git repos live under ${GIT_TREE}.
 
     # rebase
     g = rebase  # Given a <base>, rebase the current branch onto <base>. <base> can be a commit ID, branch name, a tag, or a relative reference to HEAD.
