@@ -154,17 +154,24 @@
     fogiompf = "!git fetch origin && git rebase --interactive origin/master" && git push --force
     fogiomom = "!git fetch origin && git rebase --interactive origin/master" && git checkout master
     fogiomomq = "!git fetch origin && git rebase --interactive origin/master" && git checkout master && git pull
-    fogomomq = "!git fetch origin && git rebase origin/master" && git checkout master && git pull
 
     fogiot = "!git fetch origin && git rebase --interactive origin/trunk"
     fogiotp = "!git fetch origin && git rebase --interactive origin/trunk" && git push
     fogiotpf = "!git fetch origin && git rebase --interactive origin/trunk" && git push --force
     fogiotot = "!git fetch origin && git rebase --interactive origin/trunk" && git checkout trunk
     fogiototq = "!git fetch origin && git rebase --interactive origin/trunk" && git checkout trunk && git pull
-    fogototq = "!git fetch origin && git rebase origin/trunk" && git checkout trunk && git pull
 
     fogom = "!git fetch origin && git rebase origin/master"
+    fogomp = "!git fetch origin && git rebase origin/master" && git push
+    fogompf = "!git fetch origin && git rebase origin/master" && git push --force
+    fogomom = "!git fetch origin && git rebase origin/master" && git checkout master
+    fogomomq = "!git fetch origin && git rebase origin/master" && git checkout master && git pull
+
     fogot = "!git fetch origin && git rebase origin/trunk"
+    fogotp = "!git fetch origin && git rebase origin/trunk" && git push
+    fogotpf = "!git fetch origin && git rebase origin/trunk" && git push --force
+    fogotot = "!git fetch origin && git rebase origin/trunk" && git checkout trunk
+    fogototq = "!git fetch origin && git rebase origin/trunk" && git checkout trunk && git pull
 
     syncall = "! GIT_TREE="~/git_tree" && for D in $(find "${GIT_TREE}" -name .git -type d -maxdepth 2); do D=$(dirname ${D}) && echo '\n>>>>>>>>>>' ${D} && git -C "${D}" pull --rebase=interactive; done"  # nonconforming  # This assumes that all your Git repos live under ${GIT_TREE}.
 
