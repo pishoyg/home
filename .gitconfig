@@ -179,7 +179,7 @@
     fogotot = !git fetch origin && git rebase origin/trunk && git checkout trunk
     fogototq = !git fetch origin && git rebase origin/trunk && git checkout trunk && git pull
 
-    syncall = ! GIT_TREE="~/git_tree" && for D in $(find "${GIT_TREE}" -name .git -type d -maxdepth 2); do D=$(dirname ${D}) && echo '\n>>>>>>>>>>' ${D} && git -C "${D}" pull --rebase=interactive; done  # nonconforming  # This assumes that all your Git repos live under ${GIT_TREE}.
+    syncall = "! GIT_TREE="~/git_tree" && for D in $(find "${GIT_TREE}" -name .git -type d -maxdepth 2); do D=$(dirname ${D}) && echo '\n>>>>>>>>>>' ${D} && git -C "${D}" pull --rebase=interactive; done"  # nonconforming  # This assumes that all your Git repos live under ${GIT_TREE}.
 
     # rebase
     g = rebase  # Given a <base>, rebase the current branch onto <base>. <base> can be a commit ID, branch name, a tag, or a relative reference to HEAD.
