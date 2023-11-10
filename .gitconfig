@@ -375,15 +375,22 @@
 
     oh = checkout HEAD
     oh1 = checkout HEAD^1
-    om = checkout master
-    oom = checkout origin/master
-    ot = checkout trunk
-    oot = checkout origin/trunk
 
+    om = checkout master
+    omq = ! git checkout master && git pull
     omfo = ! git checkout master && git fetch origin
     omfogiom = ! git checkout master && git fetch origin && git rebase --interactive origin/master
+    omfogom = ! git checkout master && git fetch origin && git rebase origin/master
+
+    oom = checkout origin/master
+
+    ot = checkout trunk
+    otq = ! git checkout trunk && git pull
     otfo = ! git checkout trunk && git fetch origin
     otfogiot = ! git checkout trunk && git fetch origin && git rebase --interactive origin/trunk
+    otfogot = ! git checkout trunk && git fetch origin && git rebase origin/trunk
+
+    oot = checkout origin/trunk
 
     o = checkout  # Given a file name, update the worktree to match the index. This is equivalent to `restore`.
     o- = checkout --  # Update the worktree to match the index. This is equivalent to `restore`.
