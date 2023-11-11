@@ -200,6 +200,8 @@ alias noxtrace='set +o xtrace'
 
 alias g++20='g++ -std=c++20'
 
+alias caskup='brew upgrade $(brew outdated --cask --greedy --quiet | gsed -z "s/\n/ /g")'
+
 # Copy alias
 c() {
     x="$(type "$1")"
