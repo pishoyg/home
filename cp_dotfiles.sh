@@ -86,6 +86,9 @@ copy() {
       "${SRC}"/.replyrc \
       "${SRC}"/.docs-gitconfig.txt \
       "${DEST}"
+    cp -r \
+      "${SRC}/.pip/pip.conf" \
+      "${DEST}/.pip/"
   fi
 }
 
