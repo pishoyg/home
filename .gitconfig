@@ -110,6 +110,8 @@
 
     bwcfogomomqbd = ! CUR="$(git branch --show-current)" && git fetch origin && git rebase origin/master && git checkout master && git pull && git branch --delete "${CUR}"
 
+    bwcfogononqbd = ! CUR="$(git branch --show-current)" && git fetch origin && git rebase origin/main && git checkout main && git pull && git branch --delete "${CUR}"
+
     # commit
     c = commit  # Commit.
     ca = commit --amend  # Amend the last commit.
