@@ -170,6 +170,12 @@
     fogiotot = !git fetch origin && git rebase --interactive origin/trunk && git checkout trunk
     fogiototq = !git fetch origin && git rebase --interactive origin/trunk && git checkout trunk && git pull
 
+    fogion = !git fetch origin && git rebase --interactive origin/main
+    fogionp = !git fetch origin && git rebase --interactive origin/main && git push
+    fogionpf = !git fetch origin && git rebase --interactive origin/main && git push --force
+    fogionon = !git fetch origin && git rebase --interactive origin/main && git checkout main
+    fogiononq = !git fetch origin && git rebase --interactive origin/main && git checkout main && git pull
+
     fogom = !git fetch origin && git rebase origin/master
     fogomp = !git fetch origin && git rebase origin/master && git push
     fogompf = !git fetch origin && git rebase origin/master && git push --force
@@ -181,6 +187,12 @@
     fogotpf = !git fetch origin && git rebase origin/trunk && git push --force
     fogotot = !git fetch origin && git rebase origin/trunk && git checkout trunk
     fogototq = !git fetch origin && git rebase origin/trunk && git checkout trunk && git pull
+
+    fogon = !git fetch origin && git rebase origin/main
+    fogonp = !git fetch origin && git rebase origin/main && git push
+    fogonpf = !git fetch origin && git rebase origin/main && git push --force
+    fogonon = !git fetch origin && git rebase origin/main && git checkout main
+    fogononq = !git fetch origin && git rebase origin/main && git checkout main && git pull
 
     syncall = "! GIT_TREE="~/git_tree" && for D in $(find "${GIT_TREE}" -name .git -type d -maxdepth 2); do D=$(dirname ${D}) && echo '\n>>>>>>>>>>' ${D} && git -C "${D}" pull --rebase=interactive; done"  # nonconforming  # This assumes that all your Git repos live under ${GIT_TREE}.
 
@@ -446,8 +458,14 @@
     rk = reset --keep
 
     rhh = reset --hard HEAD
+    rhh1 = reset --hard HEAD~1
+    rhh2 = reset --hard HEAD~2
+    rhh3 = reset --hard HEAD~3
+    rhh4 = reset --hard HEAD~4
+    rhh5 = reset --hard HEAD~5
     rhom = reset --hard origin/master
     rhot = reset --hard origin/trunk
+    rhon = reset --hard origin/main
 
     # switch
     s = switch  # Switch to a branch.

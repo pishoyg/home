@@ -202,6 +202,10 @@ alias g++20='g++ -std=c++20'
 
 alias caskup='brew upgrade $(brew outdated --cask --greedy --quiet | gsed -z "s/\n/ /g")'
 
+alias beep='tput bel'
+alias frog='afplay /System/Library/Sounds/Frog.aiff'
+alias yo='say yo'
+
 # Copy alias
 c() {
     x="$(type "$1")"
