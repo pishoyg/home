@@ -132,20 +132,36 @@
 
     # clean
     d = clean
-    ddr = clean --dry-run  # Display untracked files.
-    dd = clean -d  # Recurse. Go to directories.
-    df = clean --force
-    di = clean --interactive
-    dq = clean --quiet
-    de = clean --exclude
+
+    dd = clean -d  # Clean, recursively. Go to directories.
     dx = clean -x  # Clean everything, including ignored files.
     dxx = clean -X  # Clean only ignored files.
+    de = clean --exclude  # Given a pattern, clean, excluding these files from the cleanup.
 
-    ddf = clean -d --force  # Force-recurse. Go to directories.
-    dqf = clean --quiet --force
-    def = clean --exclude --force
+    dxd = clean -x -d  # Clean everything, including ignored files, going into directories.
+    dxxd = clean -X -d  # Clean only ignored files, going into directories.
+
+    ddr = clean --dry-run  # Display untracked files.
+
+    ddrd = clean --dry-run -d  # Display untracked files, recursing. Go to directories.
+    ddrx = clean -x  # Display untracked files, including ignored files.
+    ddrxx = clean --dry-run -X  # Display only ignored files.
+    ddre = clean --dry-run --exclude  # Display untracked files, and given a pattern, exclude these files from the display.
+
+    ddrxd = clean --dry-run -x -d  # Display all untracked files, including ignored files, going into directories.
+    ddrxxd = clean --dry-run -X -d  # Display only ignored files, going into directories.
+
+    ddf = clean -d --force  # Force-clean, recursively. Go to directories.
     dxf = clean -x --force  # Force-clean everything, including ignored files.
     dxxf = clean -X --force  # Force-clean only ignored files.
+    def = clean --exclude --force  # Given a pattern, force-clean, excluding these files from the cleanup.
+
+    dxdf = clean -x -d --force  # Force-clean everything, including ignored files, going into directories.
+    dxxdf = clean -X -d --force  # Force-clean only ignored files, going into directories.
+
+    di = clean --interactive  # Clean interactively.
+    dq = clean --quiet  # Only report errors, without reporting the files that are removed.
+    df = clean --force  # Force-clean.
 
     # clone
     e = clone
@@ -480,6 +496,8 @@
     # status
     t = status
     ts = status --short
+    tx = status --ignored
+    tsx = status --short --ignored
 
     # restore
     u = restore  # Restore the content of the worktree from the index.
