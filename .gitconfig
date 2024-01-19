@@ -429,6 +429,14 @@
 
     oot = checkout origin/trunk
 
+    on = checkout main
+    onq = ! git checkout main && git pull
+    onfo = ! git checkout main && git fetch origin
+    onfogion = ! git checkout main && git fetch origin && git rebase --interactive origin/main
+    onfogon = ! git checkout main && git fetch origin && git rebase origin/main
+
+    oon = checkout origin/main
+
     o = checkout  # Given a file name, update the worktree to match the index. This is equivalent to `restore`.
     o- = checkout --  # Update the worktree to match the index. This is equivalent to `restore`.
     oo = checkout --ours
