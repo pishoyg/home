@@ -226,6 +226,8 @@
 
     giom = rebase --interactive origin/master
     giot = rebase --interactive origin/trunk
+    gion = rebase --interactive origin/main
+
     gih2 = rebase --interactive HEAD~2
     gih3 = rebase --interactive HEAD~3
     gih4 = rebase --interactive HEAD~4

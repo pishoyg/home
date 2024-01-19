@@ -60,6 +60,7 @@ copy() {
   local SRC="${1}"
   local DEST="${2}"
   cp -r \
+    "${SRC}"/.oh-my-zsh \
     "${SRC}"/cp_dotfiles.sh \
     "${SRC}"/.gitconfig \
     "${SRC}"/.zshrc \
