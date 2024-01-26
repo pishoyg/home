@@ -59,8 +59,13 @@ fi
 copy() {
   local SRC="${1}"
   local DEST="${2}"
-  cp -r \
+
+  rsync -a \
     "${SRC}"/.oh-my-zsh \
+    "${DEST}" \
+    --exclude=".git"
+
+  cp -r \
     "${SRC}"/cp_dotfiles.sh \
     "${SRC}"/.gitconfig \
     "${SRC}"/.zshrc \
