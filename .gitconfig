@@ -457,17 +457,23 @@
 
     # push
     p = push
+
     psu = push --set-upstream
     psuo = push --set-upstream origin
     psuom = push --set-upstream origin master
     psuot = push --set-upstream origin trunk
+
     pf = push --force  # Push even if it results in a non-fast-forward merge.
+
     phrfm = push HEAD:refs/for/master
     phrft = push HEAD:refs/for/trunk
+
     pod = push origin --delete  # Delete all listed references from the remote repo.
     pl = push --all  # Push all local branches to the remote repo.
     plf = push --all --force  # Force-push all local branches to the remote repo.
     pt = push --tags  # Push all local tags to the remote repo.
+
+    po = push origin
 
     # pull
     q = pull  # Given a remote, fetch the specified remote’s copy of current branch and immediately merge it into the local copy.
@@ -580,3 +586,7 @@
     # git fetch origin  # g fo
     # git branch --set-upstream-to origin/master master  # g bsutom master
     # git remote set-head origin --auto  # g yshoa
+    #
+    # You might also need:
+    # git push origin master:master  # g po master:master
+    # git push origin --delete main  # g pod main
