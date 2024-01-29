@@ -62,6 +62,7 @@
 
     alc = ! git add --all && git commit
     alcp = ! git add --all && git commit && git push
+    alcpf = ! git add --all && git commit && git push --force
     alcm = ! git add --all && git commit --message
     alcmdp = ! git add --all && git commit --message DEFAULT && git push
     alca = ! git add --all && git commit --amend
