@@ -59,6 +59,7 @@
     # add
     a = add
     al = add --all
+    af = add --force
 
     alc = ! git add --all && git commit
     alcp = ! git add --all && git commit && git push
