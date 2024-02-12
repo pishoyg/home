@@ -125,6 +125,8 @@
     cal = commit --amend --all
     clm = commit --all --message
     clmd = commit --all --message DEFAULT
+    cp = ! git commit && git push
+    cpf = ! git commit && git push --force
     cap = ! git commit --amend && git push
     canep = ! git commit --amend --no-edit && git push
     capf = ! git commit --amend && git push --force
