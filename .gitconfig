@@ -178,41 +178,41 @@
     fo = fetch origin
     fol = fetch origin --all
 
-    fogiom = !git fetch origin && git rebase --interactive origin/master
-    fogiomp = !git fetch origin && git rebase --interactive origin/master && git push
-    fogiompf = !git fetch origin && git rebase --interactive origin/master && git push --force
-    fogiomom = !git fetch origin && git rebase --interactive origin/master && git checkout master
-    fogiomomq = !git fetch origin && git rebase --interactive origin/master && git checkout master && git pull
+    fogiom = ! git fetch origin && git rebase --interactive origin/master
+    fogiomp = ! git fetch origin && git rebase --interactive origin/master && git push
+    fogiompf = ! git fetch origin && git rebase --interactive origin/master && git push --force
+    fogiomom = ! git fetch origin && git rebase --interactive origin/master && git checkout master
+    fogiomomq = ! git fetch origin && git rebase --interactive origin/master && git checkout master && git pull
 
-    fogiot = !git fetch origin && git rebase --interactive origin/trunk
-    fogiotp = !git fetch origin && git rebase --interactive origin/trunk && git push
-    fogiotpf = !git fetch origin && git rebase --interactive origin/trunk && git push --force
-    fogiotot = !git fetch origin && git rebase --interactive origin/trunk && git checkout trunk
-    fogiototq = !git fetch origin && git rebase --interactive origin/trunk && git checkout trunk && git pull
+    fogiot = ! git fetch origin && git rebase --interactive origin/trunk
+    fogiotp = ! git fetch origin && git rebase --interactive origin/trunk && git push
+    fogiotpf = ! git fetch origin && git rebase --interactive origin/trunk && git push --force
+    fogiotot = ! git fetch origin && git rebase --interactive origin/trunk && git checkout trunk
+    fogiototq = ! git fetch origin && git rebase --interactive origin/trunk && git checkout trunk && git pull
 
-    fogion = !git fetch origin && git rebase --interactive origin/main
-    fogionp = !git fetch origin && git rebase --interactive origin/main && git push
-    fogionpf = !git fetch origin && git rebase --interactive origin/main && git push --force
-    fogionon = !git fetch origin && git rebase --interactive origin/main && git checkout main
-    fogiononq = !git fetch origin && git rebase --interactive origin/main && git checkout main && git pull
+    fogion = ! git fetch origin && git rebase --interactive origin/main
+    fogionp = ! git fetch origin && git rebase --interactive origin/main && git push
+    fogionpf = ! git fetch origin && git rebase --interactive origin/main && git push --force
+    fogionon = ! git fetch origin && git rebase --interactive origin/main && git checkout main
+    fogiononq = ! git fetch origin && git rebase --interactive origin/main && git checkout main && git pull
 
-    fogom = !git fetch origin && git rebase origin/master
-    fogomp = !git fetch origin && git rebase origin/master && git push
-    fogompf = !git fetch origin && git rebase origin/master && git push --force
-    fogomom = !git fetch origin && git rebase origin/master && git checkout master
-    fogomomq = !git fetch origin && git rebase origin/master && git checkout master && git pull
+    fogom = ! git fetch origin && git rebase origin/master
+    fogomp = ! git fetch origin && git rebase origin/master && git push
+    fogompf = ! git fetch origin && git rebase origin/master && git push --force
+    fogomom = ! git fetch origin && git rebase origin/master && git checkout master
+    fogomomq = ! git fetch origin && git rebase origin/master && git checkout master && git pull
 
-    fogot = !git fetch origin && git rebase origin/trunk
-    fogotp = !git fetch origin && git rebase origin/trunk && git push
-    fogotpf = !git fetch origin && git rebase origin/trunk && git push --force
-    fogotot = !git fetch origin && git rebase origin/trunk && git checkout trunk
-    fogototq = !git fetch origin && git rebase origin/trunk && git checkout trunk && git pull
+    fogot = ! git fetch origin && git rebase origin/trunk
+    fogotp = ! git fetch origin && git rebase origin/trunk && git push
+    fogotpf = ! git fetch origin && git rebase origin/trunk && git push --force
+    fogotot = ! git fetch origin && git rebase origin/trunk && git checkout trunk
+    fogototq = ! git fetch origin && git rebase origin/trunk && git checkout trunk && git pull
 
-    fogon = !git fetch origin && git rebase origin/main
-    fogonp = !git fetch origin && git rebase origin/main && git push
-    fogonpf = !git fetch origin && git rebase origin/main && git push --force
-    fogonon = !git fetch origin && git rebase origin/main && git checkout main
-    fogononq = !git fetch origin && git rebase origin/main && git checkout main && git pull
+    fogon = ! git fetch origin && git rebase origin/main
+    fogonp = ! git fetch origin && git rebase origin/main && git push
+    fogonpf = ! git fetch origin && git rebase origin/main && git push --force
+    fogonon = ! git fetch origin && git rebase origin/main && git checkout main
+    fogononq = ! git fetch origin && git rebase origin/main && git checkout main && git pull
 
     syncall = "! GIT_TREE="~/git_tree" && for D in $(find "${GIT_TREE}" -name .git -type d -maxdepth 2); do D=$(dirname ${D}) && echo '\n>>>>>>>>>>' ${D} && git -C "${D}" pull --rebase=interactive; done"  # nonconforming  # This assumes that all your Git repos live under ${GIT_TREE}.
 
@@ -412,7 +412,7 @@
     ncats = "! cat ~/.gitconfig | sed -e 's/^[ \t]*//'"
     ncatsg = "! cat ~/.gitconfig | sed -e 's/^[ \t]*//' | grep"
     ncatsga = "! cat ~/.gitconfig | sed -e 's/^[ \t]*//' | grep \"^$1 = \" #"
-    ncatsgc = "! cat ~/.gitconfig | sed -e 's/^[ \t]*//' | grep \" = $1\\b\" #"
+    ncatsgc = "! cat ~/.gitconfig | sed -e 's/^[ \t]*//' | grep \" = \\(\\! git \\)\\?$1\\b\" #"
 
     aliasl = ngras  # nonconforming
     alias = ngrasga  # nonconforming
