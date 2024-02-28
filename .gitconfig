@@ -109,10 +109,12 @@
     bwc = branch --show-current
 
     bwcfogototqbd = ! CUR="$(git branch --show-current)" && git fetch origin && git rebase origin/trunk && git checkout trunk && git pull && git branch --delete "${CUR}"
-
     bwcfogomomqbd = ! CUR="$(git branch --show-current)" && git fetch origin && git rebase origin/master && git checkout master && git pull && git branch --delete "${CUR}"
-
     bwcfogononqbd = ! CUR="$(git branch --show-current)" && git fetch origin && git rebase origin/main && git checkout main && git pull && git branch --delete "${CUR}"
+
+    bwcotrhoto = ! CUR="$(git branch --show-current)" && git checkout trunk && git reset --hard origin/trunk && git checkout "${CUR}"
+    bwcomrhomo = ! CUR="$(git branch --show-current)" && git checkout master && git reset --hard origin/master && git checkout "${CUR}"
+    bwconrhono = ! CUR="$(git branch --show-current)" && git checkout main && git reset --hard origin/main && git checkout "${CUR}"
 
     # commit
     c = commit  # Commit.
@@ -448,6 +450,10 @@
     onfo = ! git checkout main && git fetch origin
     onfogion = ! git checkout main && git fetch origin && git rebase --interactive origin/main
     onfogon = ! git checkout main && git fetch origin && git rebase origin/main
+
+    onrhon = ! git checkout main && git reset --hard origin/main
+    omrhom = ! git checkout master && git reset --hard origin/master
+    otrhot = ! git checkout trunk && git reset --hard origin/trunk
 
     oon = checkout origin/main
 
