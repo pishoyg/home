@@ -104,17 +104,29 @@
     brd = branch --remote --delete  # Delete a remote branch.
     bdf = branch --delete --force  # Force-delete a branch.
 
+    bdpod = "! git branch --delete $1 && git push origin --delete $1 #"
+
     bt = branch --track  # Track a remote branch.
 
     bwc = branch --show-current
 
+    # Sync post-merge.
     bwcfogototqbd = ! CUR="$(git branch --show-current)" && git fetch origin && git rebase origin/trunk && git checkout trunk && git pull && git branch --delete "${CUR}"
     bwcfogomomqbd = ! CUR="$(git branch --show-current)" && git fetch origin && git rebase origin/master && git checkout master && git pull && git branch --delete "${CUR}"
     bwcfogononqbd = ! CUR="$(git branch --show-current)" && git fetch origin && git rebase origin/main && git checkout main && git pull && git branch --delete "${CUR}"
 
+    # Restore main and come back.
     bwcotrhoto = ! CUR="$(git branch --show-current)" && git checkout trunk && git reset --hard origin/trunk && git checkout "${CUR}"
     bwcomrhomo = ! CUR="$(git branch --show-current)" && git checkout master && git reset --hard origin/master && git checkout "${CUR}"
     bwconrhono = ! CUR="$(git branch --show-current)" && git checkout main && git reset --hard origin/main && git checkout "${CUR}"
+
+    # Delete branch without merge.
+    bwcotbd = ! CUR="$(git branch --show-current)" && git checkout trunk && git branch --delete "${CUR}"
+    bwcombd = ! CUR="$(git branch --show-current)" && git checkout master && git branch --delete "${CUR}"
+    bwconbd = ! CUR="$(git branch --show-current)" && git checkout main && git branch --delete "${CUR}"
+    bwcotbdpod = ! CUR="$(git branch --show-current)" && git checkout trunk && git branch --delete "${CUR}" && git push origin --delete "${CUR}"
+    bwcombdpod = ! CUR="$(git branch --show-current)" && git checkout master && git branch --delete "${CUR}" && git push origin --delete "${CUR}"
+    bwconbdpod = ! CUR="$(git branch --show-current)" && git checkout main && git branch --delete "${CUR}" && git push origin --delete "${CUR}"
 
     # commit
     c = commit  # Commit.
@@ -556,6 +568,8 @@
     vs = revert --skip
     vq = revert --quit
     va = revert --abort
+
+    vh = revert HEAD
 
     # show
     w = show  # Shows one or more objects (blobs, trees, tags and commits).
