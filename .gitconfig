@@ -110,23 +110,37 @@
 
     bwc = branch --show-current
 
-    # Sync post-merge.
-    bwcfogototqbd = ! CUR="$(git branch --show-current)" && git fetch origin && git rebase origin/trunk && git checkout trunk && git pull && git branch --delete "${CUR}"
-    bwcfogomomqbd = ! CUR="$(git branch --show-current)" && git fetch origin && git rebase origin/master && git checkout master && git pull && git branch --delete "${CUR}"
-    bwcfogononqbd = ! CUR="$(git branch --show-current)" && git fetch origin && git rebase origin/main && git checkout main && git pull && git branch --delete "${CUR}"
+    bwcfogototqbd = ! CUR="$(git branch --show-current)" && git fetch origin && git rebase origin/trunk && git checkout trunk && git pull && git branch --delete "${CUR}"  # Sync post-merge.
+    bwcfogomomqbd = ! CUR="$(git branch --show-current)" && git fetch origin && git rebase origin/master && git checkout master && git pull && git branch --delete "${CUR}"  # Sync post-merge.
+    bwcfogononqbd = ! CUR="$(git branch --show-current)" && git fetch origin && git rebase origin/main && git checkout main && git pull && git branch --delete "${CUR}"  # Sync post-merge.
 
-    # Restore main and come back.
-    bwcotrhoto = ! CUR="$(git branch --show-current)" && git checkout trunk && git reset --hard origin/trunk && git checkout "${CUR}"
-    bwcomrhomo = ! CUR="$(git branch --show-current)" && git checkout master && git reset --hard origin/master && git checkout "${CUR}"
-    bwconrhono = ! CUR="$(git branch --show-current)" && git checkout main && git reset --hard origin/main && git checkout "${CUR}"
+    bwcotrhoto = ! CUR="$(git branch --show-current)" && git checkout trunk && git reset --hard origin/trunk && git checkout "${CUR}"  # Restore and come back.
+    bwcomrhomo = ! CUR="$(git branch --show-current)" && git checkout master && git reset --hard origin/master && git checkout "${CUR}"  # Restore and come back.
+    bwconrhono = ! CUR="$(git branch --show-current)" && git checkout main && git reset --hard origin/main && git checkout "${CUR}"  # Restore and come back.
 
-    # Delete branch without merge.
-    bwcotbd = ! CUR="$(git branch --show-current)" && git checkout trunk && git branch --delete "${CUR}"
-    bwcombd = ! CUR="$(git branch --show-current)" && git checkout master && git branch --delete "${CUR}"
-    bwconbd = ! CUR="$(git branch --show-current)" && git checkout main && git branch --delete "${CUR}"
-    bwcotbdpod = ! CUR="$(git branch --show-current)" && git checkout trunk && git branch --delete "${CUR}" && git push origin --delete "${CUR}"
-    bwcombdpod = ! CUR="$(git branch --show-current)" && git checkout master && git branch --delete "${CUR}" && git push origin --delete "${CUR}"
-    bwconbdpod = ! CUR="$(git branch --show-current)" && git checkout main && git branch --delete "${CUR}" && git push origin --delete "${CUR}"
+    bwcotrhbd = ! CUR="$(git branch --show-current)" && git checkout trunk && git reset --hard "${CUR}" && git branch --delete "${CUR}"  # Adopt and delete.
+    bwcomrhbd = ! CUR="$(git branch --show-current)" && git checkout master && git reset --hard "${CUR}" && git branch --delete "${CUR}"  # Adopt and delete.
+    bwconrhbd = ! CUR="$(git branch --show-current)" && git checkout main && git reset --hard "${CUR}" && git branch --delete "${CUR}"  # Adopt and delete.
+
+    bwcotrhbdp = ! CUR="$(git branch --show-current)" && git checkout trunk && git reset --hard "${CUR}" && git branch --delete "${CUR}" && git push  # Adopt and delete, and push.
+    bwcomrhbdp = ! CUR="$(git branch --show-current)" && git checkout master && git reset --hard "${CUR}" && git branch --delete "${CUR}" && git push  # Adopt and delete, and push.
+    bwconrhbdp = ! CUR="$(git branch --show-current)" && git checkout main && git reset --hard "${CUR}" && git branch --delete "${CUR}"  && git push  # Adopt and delete, and push.
+
+    bwcotrhbdpod = ! CUR="$(git branch --show-current)" && git checkout trunk && git reset --hard "${CUR}" && git branch --delete "${CUR}" && git push origin --delete "${CUR}"  # Adopt and delete, local and remote.
+    bwcomrhbdpod = ! CUR="$(git branch --show-current)" && git checkout master && git reset --hard "${CUR}" && git branch --delete "${CUR}" && git push origin --delete "${CUR}"  # Adopt and delete, local and remote.
+    bwconrhbdpod = ! CUR="$(git branch --show-current)" && git checkout main && git reset --hard "${CUR}" && git branch --delete "${CUR}" && git push origin --delete "${CUR}"  # Adopt and delete, local and remote.
+
+    bwcotrhbdpodp = ! CUR="$(git branch --show-current)" && git checkout trunk && git reset --hard "${CUR}" && git branch --delete "${CUR}" && git push origin --delete "${CUR}" && git push  # Adopt and delete, local and remote, and push.
+    bwcomrhbdpodp = ! CUR="$(git branch --show-current)" && git checkout master && git reset --hard "${CUR}" && git branch --delete "${CUR}" && git push origin --delete "${CUR}" && git push  # Adopt and delete, local and remote, and push.
+    bwconrhbdpodp = ! CUR="$(git branch --show-current)" && git checkout main && git reset --hard "${CUR}" && git branch --delete "${CUR}" && git push origin --delete "${CUR}"  && git push  # Adopt and delete, local and remote, and push.
+
+    bwcotbd = ! CUR="$(git branch --show-current)" && git checkout trunk && git branch --delete "${CUR}"  # Delete local branch without merge.
+    bwcombd = ! CUR="$(git branch --show-current)" && git checkout master && git branch --delete "${CUR}"  # Delete local branch without merge.
+    bwconbd = ! CUR="$(git branch --show-current)" && git checkout main && git branch --delete "${CUR}"  # Delete local branch without merge.
+
+    bwcotbdpod = ! CUR="$(git branch --show-current)" && git checkout trunk && git branch --delete "${CUR}" && git push origin --delete "${CUR}"  # Delete local and remote branch without merge.
+    bwcombdpod = ! CUR="$(git branch --show-current)" && git checkout master && git branch --delete "${CUR}" && git push origin --delete "${CUR}"  # Delete local and remote branch without merge.
+    bwconbdpod = ! CUR="$(git branch --show-current)" && git checkout main && git branch --delete "${CUR}" && git push origin --delete "${CUR}"  # Delete local and remote branch without merge.
 
     # commit
     c = commit  # Commit.
@@ -518,6 +532,16 @@
     rx = reset --mixed  # Reset index, but leave the worktree alone. This is default.
     rj = reset --merge
     rk = reset --keep
+
+    rh = reset HEAD
+    rh1 = reset HEAD~1
+    rh2 = reset HEAD~2
+    rh3 = reset HEAD~3
+    rh4 = reset HEAD~4
+    rh5 = reset HEAD~5
+    rom = reset origin/master
+    rot = reset origin/trunk
+    ron = reset origin/main
 
     rhh = reset --hard HEAD
     rhh1 = reset --hard HEAD~1
