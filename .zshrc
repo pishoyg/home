@@ -223,3 +223,6 @@ L="less"
 hl() {
     "$@" --help | less
 }
+ec() {
+    echo "$@" | pbcopy
+}
