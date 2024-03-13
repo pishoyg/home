@@ -262,13 +262,19 @@
     gt = rebase trunk
     gn = rebase main
 
+    gomp = ! git rebase origin/master && git push
+    gotp = ! git rebase origin/trunk && git push
+    gonp = ! git rebase origin/main && git push
+    gmp = ! git rebase master && git push
+    gtp = ! git rebase trunk && git push
+    gnp = ! git rebase main && git push
+
     giom = rebase --interactive origin/master
     giot = rebase --interactive origin/trunk
     gion = rebase --interactive origin/main
     gim = rebase --interactive master
     git = rebase --interactive trunk
     gin = rebase --interactive main
-
 
     gih2 = rebase --interactive HEAD~2
     gih3 = rebase --interactive HEAD~3
