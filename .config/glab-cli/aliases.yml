@@ -1,8 +1,56 @@
-ci: pipeline ci
-co: mr checkout
+# api
 
+# ci
+cia: ci artifact
+
+cic: ci config
+
+cid: ci delete
+
+cie: ci trace
+
+cig: ci get
+
+cil: ci list
+
+cin: ci lint
+
+cir: ci run
+cirr: ci trigger
+
+cit: ci status
+
+civ: ci view
+
+ciy: ci retry
+
+# check-update
+cu: check-update
+
+# merge
+mrc: mr create
+mrcpfyne: mr create --push --fill --yes --no-editor
 mrcprsbfyne: mr create --push --remove-source-branch --fill --yes --no-editor
-mail: mr create --push --remove-source-branch --fill --yes --no-editor
+mail: mrcpfyne
+hail: mrcprsbfyne
 
+mrd: mr delete
+
+mre: mr close
+
+mrl: mr list
+
+mrm: mr merge
+mrmamy: mr merge --auto-merge --yes
 mrmrsbamy: mr merge --remove-source-branch --auto-merge --yes
-submit: mr merge --remove-source-branch --auto-merge --yes
+submit: mrmamy
+darnit: mrmrsbamy
+
+mro: mr checkout
+
+mru: mr update
+mrut: mr update --title
+mrursb: mr update --remove-source-branch
+mrur: mr update --reviewer
+
+mrv: mr view
