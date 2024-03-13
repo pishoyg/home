@@ -541,7 +541,6 @@
     rj = reset --merge
     rk = reset --keep
 
-    rh = reset HEAD
     rh1 = reset HEAD~1
     rh2 = reset HEAD~2
     rh3 = reset HEAD~3
