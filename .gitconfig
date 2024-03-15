@@ -246,6 +246,10 @@
 
     syncall = "! GIT_TREE="~/git_tree" && for D in $(find "${GIT_TREE}" -name .git -type d -maxdepth 2); do D=$(dirname ${D}) && echo '\n>>>>>>>>>>' ${D} && git -C "${D}" pull --rebase=interactive; done"  # nonconforming  # This assumes that all your Git repos live under ${GIT_TREE}.
 
+    mercurialt = "! git fetch origin && for BRANCH in $(git for-each-ref --format='%(refname:short)' refs/heads/ | grep --invert trunk); do git checkout "${BRANCH}" && git rebase origin/trunk && git push --force; done"
+    mercurialm = "! git fetch origin && for BRANCH in $(git for-each-ref --format='%(refname:short)' refs/heads/ | grep --invert master); do git checkout "${BRANCH}" && git rebase origin/master && git push --force; done"
+    mercurialn = "! git fetch origin && for BRANCH in $(git for-each-ref --format='%(refname:short)' refs/heads/ | grep --invert main); do git checkout "${BRANCH}" && git rebase origin/main && git push --force; done"
+
     # rebase
     g = rebase  # Given a <base>, rebase the current branch onto <base>. <base> can be a commit ID, branch name, a tag, or a relative reference to HEAD.
 
@@ -268,6 +272,13 @@
     gmp = ! git rebase master && git push
     gtp = ! git rebase trunk && git push
     gnp = ! git rebase main && git push
+
+    gompf = ! git rebase origin/master && git push --force
+    gotpf = ! git rebase origin/trunk && git push --force
+    gonpf = ! git rebase origin/main && git push --force
+    gmpf = ! git rebase master && git push --force
+    gtpf = ! git rebase trunk && git push --force
+    gnpf = ! git rebase main && git push --force
 
     giom = rebase --interactive origin/master
     giot = rebase --interactive origin/trunk
@@ -351,6 +362,7 @@
     # for-each-ref
     j = for-each-ref
     jscdrh = for-each-ref --sort=-committerdate refs/heads/
+    jfrsrh = for-each-ref --format='%(refname:short)' refs/heads/
 
     # tag
     k = tag
@@ -609,6 +621,7 @@
 
     # rm
     x = rm  # Remove files from the working tree and from the index.
+    xr = rm -r
     xf = rm --force  # Force-remove files from the working tree and from the index.
     xc = rm --cached  # Remove a file from the index, but keep it in the worktree.
     xcf = rm --cached  --force  # Remove a file from the index, but keep it in the worktree.
