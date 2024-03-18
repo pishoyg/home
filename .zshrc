@@ -190,9 +190,12 @@ alias llf='ls -lAF'
 alias vi=$(which vim)  # Typing `vi` invokes `vim`.
 alias vim=nvim  # Typing `vim` actually invokes `nvim`.
 alias vimr='vim -R'  # Open in read-only mode.
+
 alias g=git
+
 alias python=python3
 alias pip=pip3
+
 alias reboot='shutdown -r now'
 
 alias xtrace='set -o xtrace'
@@ -226,3 +229,15 @@ hl() {
 ec() {
     echo "$@" | pbcopy
 }
+
+# pre-commit aliases
+alias pc='pre-commit'
+
+alias pcsc='pre-commit sample-config'
+alias pcscpccy='pre-commit sample-config > .pre-commit-config.yaml'
+
+alias pci='pre-commit install'
+
+alias pcr='pre-commit run'
+alias pcraf='pre-commit run --all-files'
+

@@ -246,9 +246,22 @@
 
     syncall = "! GIT_TREE="~/git_tree" && for D in $(find "${GIT_TREE}" -name .git -type d -maxdepth 2); do D=$(dirname ${D}) && echo '\n>>>>>>>>>>' ${D} && git -C "${D}" pull --rebase=interactive; done"  # nonconforming  # This assumes that all your Git repos live under ${GIT_TREE}.
 
-    mercurialt = "! git fetch origin && for BRANCH in $(git for-each-ref --format='%(refname:short)' refs/heads/ | grep --invert trunk); do git checkout "${BRANCH}" && git rebase origin/trunk && git push --force; done"
-    mercurialm = "! git fetch origin && for BRANCH in $(git for-each-ref --format='%(refname:short)' refs/heads/ | grep --invert master); do git checkout "${BRANCH}" && git rebase origin/master && git push --force; done"
-    mercurialn = "! git fetch origin && for BRANCH in $(git for-each-ref --format='%(refname:short)' refs/heads/ | grep --invert main); do git checkout "${BRANCH}" && git rebase origin/main && git push --force; done"
+    # This performs a mercurial-style sync on all branches other than the main / master / trunk branch.
+    mercurialt = "! git fetch origin && for BRANCH in $(git for-each-ref --format='%(refname:short)' refs/heads/ | grep --invert trunk); do git checkout "${BRANCH}" && git rebase origin/trunk; done"
+    mercurialm = "! git fetch origin && for BRANCH in $(git for-each-ref --format='%(refname:short)' refs/heads/ | grep --invert master); do git checkout "${BRANCH}" && git rebase origin/master; done"
+    mercurialn = "! git fetch origin && for BRANCH in $(git for-each-ref --format='%(refname:short)' refs/heads/ | grep --invert main); do git checkout "${BRANCH}" && git rebase origin/main; done"
+
+    mercurialto = "! git fetch origin && for BRANCH in $(git for-each-ref --format='%(refname:short)' refs/heads/ | grep --invert trunk); do git checkout "${BRANCH}" && git rebase origin/trunk && git checkout trunk; done"
+    mercurialmo = "! git fetch origin && for BRANCH in $(git for-each-ref --format='%(refname:short)' refs/heads/ | grep --invert master); do git checkout "${BRANCH}" && git rebase origin/master && git checkout master; done"
+    mercurialno = "! git fetch origin && for BRANCH in $(git for-each-ref --format='%(refname:short)' refs/heads/ | grep --invert main); do git checkout "${BRANCH}" && git rebase origin/main && git checkout main; done"
+
+    mercurialtpf = "! git fetch origin && for BRANCH in $(git for-each-ref --format='%(refname:short)' refs/heads/ | grep --invert trunk); do git checkout "${BRANCH}" && git rebase origin/trunk && git push --force; done"
+    mercurialmpf = "! git fetch origin && for BRANCH in $(git for-each-ref --format='%(refname:short)' refs/heads/ | grep --invert master); do git checkout "${BRANCH}" && git rebase origin/master && git push --force; done"
+    mercurialnpf = "! git fetch origin && for BRANCH in $(git for-each-ref --format='%(refname:short)' refs/heads/ | grep --invert main); do git checkout "${BRANCH}" && git rebase origin/main && git push --force; done"
+
+    mercurialtpfo = "! git fetch origin && for BRANCH in $(git for-each-ref --format='%(refname:short)' refs/heads/ | grep --invert trunk); do git checkout "${BRANCH}" && git rebase origin/trunk && git push --force && git checkout trunk; done"
+    mercurialmpfo = "! git fetch origin && for BRANCH in $(git for-each-ref --format='%(refname:short)' refs/heads/ | grep --invert master); do git checkout "${BRANCH}" && git rebase origin/master && git push --force && git checkout master; done"
+    mercurialnpfo = "! git fetch origin && for BRANCH in $(git for-each-ref --format='%(refname:short)' refs/heads/ | grep --invert main); do git checkout "${BRANCH}" && git rebase origin/main && git push --force && git checkout main; done"
 
     # rebase
     g = rebase  # Given a <base>, rebase the current branch onto <base>. <base> can be a commit ID, branch name, a tag, or a relative reference to HEAD.
@@ -548,7 +561,6 @@
     rh = reset --hard  # Reset index and worktree to match HEAD.
     rh = reset --hard  # Given a commit, reset index and worktree to match that commit, and delete all commits after that commit.
     rs = reset --soft  # Given a commit, reset HEAD to that commit, leaving the index and worktree alone.
-    rsh1 = reset --soft HEAD^  # Reset HEAD to HEAD's first parent, leaving the index and worktree alone. This essentially undoes a `commit`.
     rx = reset --mixed  # Reset index, but leave the worktree alone. This is default.
     rj = reset --merge
     rk = reset --keep
@@ -571,6 +583,16 @@
     rhom = reset --hard origin/master
     rhot = reset --hard origin/trunk
     rhon = reset --hard origin/main
+
+    rsh = reset --soft HEAD
+    rsh1 = reset --soft HEAD~1
+    rsh2 = reset --soft HEAD~2
+    rsh3 = reset --soft HEAD~3
+    rsh4 = reset --soft HEAD~4
+    rsh5 = reset --soft HEAD~5
+    rsom = reset --soft origin/master
+    rsot = reset --soft origin/trunk
+    rson = reset --soft origin/main
 
     # switch
     s = switch  # Switch to a branch.
