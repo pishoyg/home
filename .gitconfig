@@ -626,7 +626,7 @@
 
     # revert
     v = revert  # Create a commit that reverts the work done by an earlier commit.
-    vm = revert --mainline  # Revert a merge commit, specifying the parent number.
+    vnl = revert --mainline  # Revert a merge commit, specifying the parent number.
     vne = revert --no-edit  # Revert a commit, without opening the commit message editor.
     vnc = revert --no-commit  # Revert a commit, only applying the changes to the worktree and the index without creating a new commit.
     ve = revert --continue
@@ -661,7 +661,8 @@
     ysho = remote set-head origin
     yshoa = remote set-head origin --auto
 
-    chrome = "! open -a 'Google Chrome' "https://gitlab.booking.com$(git remote --verbose | head -n 1 | awk '{print $2}' | grep -o ':.*' | tr : / )""
+    chrome = "! open -a 'Google Chrome' "https://$(git remote --verbose | awk 'NR==1 {print $2}' | grep -o '@.*' | tr -d @ | tr : / | sed -e 's/.git$//')""  # nonconforming
+    critique = "! REPO="https://$(git remote --verbose | awk 'NR==1 {print $2}' | grep -o '@.*' | tr -d @ | tr : / | sed -e 's/.git$//')" && for MR in $(glab mr list --author $USER | awk 'NR==3 {print $2}' | grep -oP '[0-9]+$'); do open -a 'Google Chrome' "${REPO}/-/merge_requests/${MR}"; done"  # nonconforming
 
     # mv
     z = mv  # Move or rename a file, a directory, or a symlink.
