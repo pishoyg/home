@@ -661,6 +661,8 @@
     ysho = remote set-head origin
     yshoa = remote set-head origin --auto
 
+    chrome = "! open -a 'Google Chrome' "https://gitlab.booking.com$(git remote --verbose | head -n 1 | awk '{print $2}' | grep -o ':.*' | tr : / )""
+
     # mv
     z = mv  # Move or rename a file, a directory, or a symlink.
 
