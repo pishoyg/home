@@ -247,6 +247,6 @@ alias pcraf='pre-commit run --all-files'
 [[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh"
 
 alias _nofri='bash ~/cp_dotfiles.sh --git_repo ~/git_tree/home --message "${M}"'
-alias __nofri='g syncall'
+alias __nofri='git syncall'
 alias ___nofri='brew upgrade'
 alias ____nofri='pip-review --local --auto'
