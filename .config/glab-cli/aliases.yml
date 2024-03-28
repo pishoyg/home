@@ -3,6 +3,11 @@ mail: mr create --push --remove-source-branch --fill --yes --no-editor  # noncon
 hail: mr create --push --fill --yes --no-editor  # nonconfirming  # Mail without --remove-source-branch.
 submit: mr merge --remove-source-branch --auto-merge --yes  # nonconfirming
 hithit: mr merge --auto-merge --yes  # nonconfirming  # Submit without --remove-source-branch.
+
+critique: '!for MR in $(glab mr list --author $USER | awk "NR>=3 {print \$2}" | grep -oP "[0-9]+$"); do open -a "Google Chrome" "$(git url)/-/merge_requests/${MR}"; done'  # nonconfirming
+
+whatspipe: pipeline view  # nonconfirming
+whatsup: pipeline view --web  # nonconfirming
 # api
 
 # ci
@@ -37,4 +42,3 @@ mrursb: mr update --remove-source-branch
 mrur: mr update --reviewer
 mrv: mr view
 
-critique: '!for MR in $(glab mr list --author $USER | awk "NR>=3 {print \$2}" | grep -oP "[0-9]+$"); do open -a "Google Chrome" "$(git url)/-/merge_requests/${MR}"; done'  # nonconfirming

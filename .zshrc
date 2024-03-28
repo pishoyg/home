@@ -246,7 +246,8 @@ alias pcraf='pre-commit run --all-files'
 # CodeWhisperer post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh"
 
-alias _nofri='bash ~/cp_dotfiles.sh --git_repo ~/git_tree/home --message "${M}"'
-alias __nofri='git syncall'
-alias ___nofri='brew upgrade'
-alias ____nofri='pip-review --local --auto'
+alias nofri_home='bash ~/cp_dotfiles.sh --git_repo ~/git_tree/home --message "${M}"'
+alias nofri_git='git syncall'
+alias nofri_brew='brew upgrade'
+alias nofri_pip='pip-review --local --auto'
+alias nofri='nofri_home && nofri_git && nofri_brew && nofri_pip'

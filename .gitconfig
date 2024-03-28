@@ -541,6 +541,8 @@
     pl = push --all  # Push all local branches to the remote repo.
     plf = push --all --force  # Force-push all local branches to the remote repo.
     pt = push --tags  # Push all local tags to the remote repo.
+    pft = push --follow-tags
+    ptft = push --tags --follow-tags
 
     po = push origin
 
@@ -661,7 +663,7 @@
     ysho = remote set-head origin
     yshoa = remote set-head origin --auto
 
-    url = "! git remote --verbose | awk 'NR==1 {print $2}' | tr : / | sed -e 's-git@-https://-' | tr -d @ | sed -e 's/.git$//'"  # nonconforming
+    url = "! git remote --verbose | awk 'NR==1 {print $2}' | tr : / | sed -e 's-git@-https://-' | sed -e 's/.git$//'"  # nonconforming
     chrome = "! open -a 'Google Chrome' "$(git url)""  # nonconforming
 
     # mv
