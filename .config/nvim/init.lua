@@ -1,11 +1,12 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 -- disable wrap
-vim.opt.wrap = false
+-- vim.opt.wrap = false
+vim.opt.textwidth = 79
 
 -- Install package manager
--- https://github.com/folke/lazy.nvim
--- `:help lazy.nvim.txt` for more info
+--    https://github.com/folke/lazy.nvim
+--    `:help lazy.nvim.txt` for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
@@ -23,19 +24,19 @@ package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/shar
 package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?.lua;"
 
 -- set of keymaps for toggleterm
+vim.keymap.set('n', '<C-j>', [[:ToggleTerm<CR><C-\><C-n>i]], { silent = true, desc = 'Toggle terminal' })
 function _G.set_terminal_keymaps()
   local opts = { buffer = 0 }
-  vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
+  vim.keymap.set('t', '<C-j>', [[<C-\><C-n>:ToggleTerm<CR>]], opts)
   vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], opts)
 end
-
--- if you want these mappings globably term://* instead
 vim.cmd('autocmd! TermOpen term://*toggleterm#* lua set_terminal_keymaps()')
+
 vim.cmd('autocmd! BufRead *.typ silent!typst watch "<amatch>"')
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  desc = "Format C/C++ on save",
-  pattern = { "*.c", "*.h", "*.cpp", "*.hpp", "*.cc", "*.hh" },
+  desc = "Format C/C++/Verilog on save",
+  pattern = { "*.c", "*.h", "*.cpp", "*.hpp", "*.cc", "*.hh", "*.v" },
   callback = function()
     vim.opt.shiftwidth = 2
     vim.opt.tabstop = 2
@@ -44,18 +45,14 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 })
 
 -- Toggle term
-vim.keymap.set('n', '<leader>t', ':ToggleTerm<CR>', {
-  silent = true,
-  desc = 'Toggle terminal'
-})
 
 vim.opt.rtp:prepend(lazypath)
 
 -- NOTE: Here is where you install your plugins.
--- You can configure plugins using the `config` key.
+--  You can configure plugins using the `config` key.
 --
--- You can also configure plugins after the setup call,
--- as they will be available in your neovim runtime.
+--  You can also configure plugins after the setup call,
+--    as they will be available in your neovim runtime.
 require('lazy').setup({
 
   { -- edit directories and files like buffers
@@ -67,6 +64,16 @@ require('lazy').setup({
     dependencies = {
       'kevinhwang91/promise-async',
     },
+  },
+
+  {
+    'josa42/nvim-gx'
+  },
+
+  { -- Preview markdown code directly in your neovim terminal
+    "ellisonleao/glow.nvim",
+    config = true,
+    cmd = "Glow"
   },
 
   { -- cpp manual
@@ -90,15 +97,15 @@ require('lazy').setup({
     end,
   },
 
-  { -- 
+  { --
     'folke/noice.nvim',
     event = "VeryLazy",
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
       "MunifTanjim/nui.nvim",
       -- OPTIONAL:
-      -- `nvim-notify` is only needed, if you want to use the notification view.
-      -- If not available, we use `mini` as the fallback
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
       "rcarriga/nvim-notify",
     }
   },
@@ -122,13 +129,6 @@ require('lazy').setup({
         disable_legacy_commands = true
       })
     end,
-  },
-
-  {
-    "loctvl842/monokai-pro.nvim",
-    config = function()
-      require("monokai-pro").setup()
-    end
   },
 
   {
@@ -170,17 +170,19 @@ require('lazy').setup({
     'akinsho/toggleterm.nvim',
     version = "*",
     config = true,
+    opts = {
+      insert_mappings = true,
+    },
   },
 
   { -- Markdown
-    'iamcco/markdown-preview.nvim',
-    run = function()
-      vim.fn["mkdp#util#install"]()
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && yarn install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
     end,
-    ft = "markdown",
-    cmd = { "MarkdownPreview" },
-    dependencies = { 'zhaozg/vim-diagram', 'aklt/plantuml-syntax' },
-    lazy = true,
+    ft = { "markdown" },
   },
 
   {
@@ -205,7 +207,7 @@ require('lazy').setup({
   'tpope/vim-sleuth',
 
   -- NOTE: This is where your plugins related to LSP can be installed.
-  -- The configuration is done below. Search for lspconfig to find it below.
+  --  The configuration is done below. Search for lspconfig to find it below.
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -264,9 +266,12 @@ require('lazy').setup({
       },
     },
     sections = {
-      lualine_a = {
-        { 'buffer', }
-      }
+      lualine_a = { 'buffer', },
+      lualine_b = { 'progress', }
+    },
+
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
     }
   },
 
@@ -279,8 +284,7 @@ require('lazy').setup({
 
   -- "gc" to comment visual regions/lines
   {
-    'numToStr/Comment.nvim',
-    lazy = false
+    'terrortylor/nvim-comment'
   },
 
   -- Fuzzy Finder (files, lsp, etc)
@@ -292,7 +296,7 @@ require('lazy').setup({
   {
     'nvim-telescope/telescope-fzf-native.nvim',
     -- NOTE: If you are having trouble with this installation,
-    -- refer to the README for telescope-fzf-native for more instructions.
+    --       refer to the README for telescope-fzf-native for more instructions.
     build = 'make',
     cond = function()
       return vim.fn.executable 'make' == 1
@@ -518,7 +522,7 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Open float
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
 -- LSP settings.
--- This function gets run when an LSP connects to a particular buffer.
+--  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
@@ -563,10 +567,10 @@ local on_attach = function(_, bufnr)
 end
 
 -- Enable the following language servers
--- Feel free to add/remove any LSPs that you want here. They will automatically be installed.
+--  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 --
--- Add any additional override configuration in the following tables. They will be passed to
--- the `settings` field of the server config. You must look up that documentation yourself.
+--  Add any additional override configuration in the following tables. They will be passed to
+--  the `settings` field of the server config. You must look up that documentation yourself.
 
 local servers = {
   lua_ls = {
@@ -606,6 +610,9 @@ mason_lspconfig.setup_handlers {
       on_attach = on_attach,
       settings = servers[server_name],
       filetypes = (servers[server_name] or {}).filetypes,
+    }
+    require('lspconfig')['verible'].setup {
+      cmd = { 'verible-verilog-ls', '--rules_config_search' },
     }
   end,
 }
@@ -650,7 +657,7 @@ cmp.setup {
   },
   sorting = {
     priority_weight = 1,
-        comparators = {
+    comparators = {
       cmp.config.compare.locality,
       cmp.config.compare.recently_used,
       cmp.config.compare.score,
@@ -667,25 +674,22 @@ cmp.setup {
   })
 }
 
-require("monokai-pro").setup({
-  filter = "octagon", -- classic | octagon | pro | machine | ristretto | spectrum
-  -- Enable this will disable filter option
-  day_night = {
-    enable = true, -- turn off by default
-    day_filter = "pro", -- classic | octagon | pro | machine | ristretto | spectrum
-    night_filter = "octagon", -- classic | octagon | pro | machine | ristretto | spectrum
-  },
-}) -- lua
-vim.cmd([[colorscheme catppuccin-macchiato]])
+local time = os.date("*t")
+if os.getenv('ITERM_PROFILE') == 'Dark' then
+  vim.g.tokyonight_style = "night"
+  vim.cmd([[colorscheme catppuccin-macchiato]])
+else
+  vim.cmd([[colorscheme catppuccin-latte]])
+end
 
 local ls = require("luasnip")
 
 require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets/" })
 
 ls.config.set_config({
-  history = true, -- keep last snippet local to jump back
+  history = true,                            -- keep last snippet local to jump back
   updateevents = "TextChanged,TextChangedI", -- Update while typing in insert mode
-  enable_autosnippets = true, -- use autosnippets
+  enable_autosnippets = true,                -- use autosnippets
   ext_opts = {
     [require("luasnip.util.types").choiceNode] = {
       active = {
@@ -728,20 +732,20 @@ require("noice").setup({
   },
   -- you can enable a preset for easier configuration
   presets = {
-    bottom_search = true, -- use a classic bottom cmdline for search
-    command_palette = true, -- position the cmdline and popupmenu together
+    bottom_search = true,         -- use a classic bottom cmdline for search
+    command_palette = true,       -- position the cmdline and popupmenu together
     long_message_to_split = true, -- long messages will be sent to a split
-    inc_rename = false, -- enables an input dialog for inc-rename.nvim
-    lsp_doc_border = false, -- add a border to hover docs and signature help
+    inc_rename = false,           -- enables an input dialog for inc-rename.nvim
+    lsp_doc_border = false,       -- add a border to hover docs and signature help
   },
 })
 
-local set = vim.opt -- set options
-set.tabstop = 2 -- Number of spaces tabs count for
-set.softtabstop = 2 -- Number of spaces that a <Tab> counts for
-set.shiftwidth = 2 -- Size of an indent
+local set = vim.opt  -- set options
+set.tabstop = 2      -- Number of spaces tabs count for
+set.softtabstop = 2  -- Number of spaces that a <Tab> counts for
+set.shiftwidth = 2   -- Size of an indent
 set.expandtab = true -- Use spaces instead of tabs
-set.colorcolumn = '79'
+set.colorcolumn = '80'
 set.spell = true
 set.relativenumber = true -- Show relative line numbers
 set.guitablabel = '%N %t'
@@ -761,6 +765,8 @@ require('ufo').setup({
 })
 
 require("oil").setup()
+require('nvim_comment').setup()
 
 vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
 vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+vim.keymap.set('n', 'gx', require('gx').gx)
