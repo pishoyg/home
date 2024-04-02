@@ -197,7 +197,7 @@ alias g=git
 
 alias python=python3
 alias pip=pip3
-alias pipf='pip --break-system-packages'
+alias pipif='pip install --break-system-packages'
 
 alias reboot='shutdown -r now'
 
