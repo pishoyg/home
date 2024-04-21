@@ -344,6 +344,12 @@
     ihs = diff HEAD --stat
     ihps = diff HEAD --patch-with-stat
 
+    ih1 = diff HEAD~1  # Diff the worktree and the parent commit.
+    ih1no = diff HEAD~1 --name-only
+    ih1ns = diff HEAD~1 --name-status
+    ih1s = diff HEAD~1 --stat
+    ih1ps = diff HEAD~1 --patch-with-stat
+
     iom = diff origin/master  # Diff the worktree and origin/master.
     iomno = diff origin/master --name-only
     iomns = diff origin/master --name-status
@@ -638,6 +644,7 @@
     va = revert --abort
 
     vh = revert HEAD
+    vh1 = revert HEAD~1
 
     # show
     w = show  # Shows one or more objects (blobs, trees, tags and commits).
@@ -665,7 +672,8 @@
     yshoa = remote set-head origin --auto
 
     url = "! git remote --verbose | awk 'NR==1 {print $2}' | tr : / | sed -e 's-git@-https://-' | sed -e 's/.git$//'"  # nonconforming
-    chrome = "! open -a 'Google Chrome' "$(git url)""  # nonconforming
+    gitlab = "! open -a 'Google Chrome' "$(git url)""  # nonconforming
+    sourcegraph = "! URL="$(git url)" && OLD_DOMAIN=$(grep -o '[^/]*gitlab[^/]*' <<< ${URL}) && NEW_DOMAIN=${OLD_DOMAIN/gitlab/sourcegraph}/${OLD_DOMAIN} && open -a 'Google Chrome' "${URL/$OLD_DOMAIN/$NEW_DOMAIN}""  # nonconforming
 
     # mv
     z = mv  # Move or rename a file, a directory, or a symlink.
