@@ -1,4 +1,4 @@
-[color "diff"]
+[-color "diff"]
     newMoved=green bold
     oldMoved=red bold
 
@@ -673,6 +673,7 @@
 
     url = "! git remote --verbose | awk 'NR==1 {print $2}' | tr : / | sed -e 's-git@-https://-' | sed -e 's/.git$//'"  # nonconforming
     gitlab = "! open -a 'Google Chrome' "$(git url)""  # nonconforming
+    gitlab-branch = "! open -a 'Google Chrome' "$(git url)/-/tree/$(git bwc)""  # nonconforming
     sourcegraph = "! URL="$(git url)" && OLD_DOMAIN=$(grep -o '[^/]*gitlab[^/]*' <<< ${URL}) && NEW_DOMAIN=${OLD_DOMAIN/gitlab/sourcegraph}/${OLD_DOMAIN} && open -a 'Google Chrome' "${URL/$OLD_DOMAIN/$NEW_DOMAIN}""  # nonconforming
 
     # mv
