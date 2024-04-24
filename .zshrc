@@ -172,16 +172,13 @@ if [ -f ~/.git-prompt.sh ]; then
     setopt PROMPT_SUBST ; PS1='[%n@%m %c$(__git_ps1 " (%s)")]\$ '
 fi
 
+##############################
 ########## My stuff ##########
+##############################
+
 eval "$(/opt/homebrew/bin/brew shellenv)"
-alias format="bash ~/coptic/dictionary/marcion/utils/formatter.py"
 
-if [[ $SHELL == *zsh* ]]; then
-  bindkey -v
-elif [[ $SHELL == *bash* ]]; then
-  set -o vi
-fi
-
+# ls
 alias ls='ls --color=always -Gh'
 alias lf='ls -F'
 alias la='ls -A'
@@ -189,32 +186,44 @@ alias laf='ls -AF'
 alias ll='ls -lA'
 alias llf='ls -lAF'
 
+# Vim
+if [[ $SHELL == *zsh* ]]; then
+  bindkey -v
+elif [[ $SHELL == *bash* ]]; then
+  set -o vi
+fi
+
 alias vi=$(which vim)  # Typing `vi` invokes `vim`.
 alias vim=nvim  # Typing `vim` actually invokes `nvim`.
 alias vimr='vim -R'  # Open in read-only mode.
 
+# Git
 alias g=git
 
+# Python
 alias python=python3
 alias pip=pip3
 alias pipif='pip install --break-system-packages'
 
+# Reboot.
 alias reboot='shutdown -r now'
 
+# xtrace
 alias xtrace='set -o xtrace'
 alias noxtrace='set +o xtrace'
 
+# g++
 alias g++20='g++ -std=c++20'
 
-alias caskup='brew upgrade $(brew outdated --cask --greedy --quiet | gsed -z "s/\n/ /g")'
-
+# Play sound aliases.
 alias beep='tput bel'
 alias frog='afplay /System/Library/Sounds/Frog.aiff'
 alias yo='say yo'
 
+# curl
 alias curl5='curl -fiv'  # There is no -e.
 
-# Copy alias
+# Copy alias.
 c() {
     x="$(type "$1")"
     x="${x/$1 is an alias for /}"
@@ -222,8 +231,8 @@ c() {
     echo "Copied '${x}'"
 }
 
+# Basic stuff!
 C="pbcopy"
-
 H="--help"
 L="less"
 hl() {
@@ -233,7 +242,7 @@ ec() {
     echo "$@" | pbcopy
 }
 
-# pre-commit aliases
+# pre-commit
 alias pc='pre-commit'
 
 alias pcsc='pre-commit sample-config'
@@ -244,11 +253,18 @@ alias pci='pre-commit install'
 alias pcr='pre-commit run'
 alias pcraf='pre-commit run --all-files'
 
+# Good morning!
+alias nofri_home='bash ~/.cp_dotfiles.sh --git_repo ~/git_tree/home --message "${M}"'
+alias nofri_git='git syncall'
+alias nofri_brew='brew upgrade && brew upgrade $(brew outdated --cask --greedy --quiet | gsed -z "s/\n/ /g")'
+alias nofri_pip='pip-review --local --auto'
+alias nofri='nofri_home && nofri_git && nofri_brew && nofri_pip'
+
+# yarn
+alias y='yarn'
+alias yv='yarn version'
+alias yvp='yarn version --patch'
+
 # CodeWhisperer post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh"
 
-alias nofri_home='bash ~/cp_dotfiles.sh --git_repo ~/git_tree/home --message "${M}"'
-alias nofri_git='git syncall'
-alias nofri_brew='brew upgrade'
-alias nofri_pip='pip-review --local --auto'
-alias nofri='nofri_home && nofri_git && nofri_brew && nofri_pip'

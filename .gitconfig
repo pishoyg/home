@@ -245,7 +245,7 @@
     fogonon = ! git fetch origin && git rebase origin/main && git checkout main
     fogononq = ! git fetch origin && git rebase origin/main && git checkout main && git pull
 
-    syncall = "! GIT_TREE="~/git_tree" && for D in $(find "${GIT_TREE}" -name .git -type d -maxdepth 2); do D=$(dirname ${D}) && echo '\n>>>>>>>>>>' ${D} && git -C "${D}" pull --rebase=interactive; done"  # nonconforming  # This assumes that all your Git repos live under ${GIT_TREE}.
+    syncall = "! GIT_TREE="~/git_tree" && for D in $(find "${GIT_TREE}" -name .git -type d -maxdepth 2); do D=$(dirname ${D}) && echo '\n>>>>>>>>>>' ${D} && git -C "${D}" fetch origin && git -C "${D}" pull --rebase=interactive; done"  # nonconforming  # This assumes that all your Git repos live under ${GIT_TREE}.
 
     # This performs a mercurial-style sync on all branches other than the main / master / trunk branch.
     mercurialt = "! git fetch origin && for BRANCH in $(git for-each-ref --format='%(refname:short)' refs/heads/ | grep --invert trunk); do git checkout "${BRANCH}" && git rebase origin/trunk; done"

@@ -73,7 +73,7 @@ copy() {
     --exclude=".git"
 
   cp -r \
-    "${SRC}"/cp_dotfiles.sh \
+    "${SRC}"/.cp_dotfiles.sh \
     "${SRC}"/.gitconfig \
     "${SRC}"/.zshrc \
     "${DEST}"
