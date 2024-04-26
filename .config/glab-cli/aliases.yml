@@ -1,30 +1,27 @@
-# Most frequently used!
-mail: mr create --push --remove-source-branch --fill --yes --no-editor  # nonconfirming
-hail: mr create --push --fill --yes --no-editor  # nonconfirming  # Mail without --remove-source-branch.
-submit: mr merge --remove-source-branch --auto-merge --yes  # nonconfirming
-hithit: mr merge --auto-merge --yes  # nonconfirming  # Submit without --remove-source-branch.
+# pipeline
 
-critique: '!for MR in $(glab mr list --author $USER | awk "NR>=3 {print \$2}" | grep -oP "[0-9]+$"); do open -a "Google Chrome" "$(git url)/-/merge_requests/${MR}"; done'  # nonconfirming
+# pipeline: most frequently used
+p: pipeline
+pa: pipeline artifact
+pn: pipeline config
+pd: pipeline delete
+pg: pipeline get
+pi: pipeline lint
+pl: pipeline list
+py: pipeline retry
+pr: pipeline run
+pu: pipeline run-trig
+ps: pipeline status
+pe: pipeline trace
+pt: pipeline trigger
+pv: pipeline view
+pvw: pipeline view --web
 
-whatspipe: pipeline view  # nonconfirming
-whatsup: pipeline view --web  # nonconfirming
 # api
 
-# ci
-cia: ci artifact
-cic: ci config
-cid: ci delete
-cie: ci trace
-cig: ci get
-cil: ci list
-cin: ci lint
-cir: ci run
-cirr: ci trigger
-cit: ci status
-civ: ci view
-ciy: ci retry
 # check-update
 cu: check-update
+
 # mr
 mrc: mr create
 mrcpfyne: mr create --push --fill --yes --no-editor
@@ -41,4 +38,12 @@ mrut: mr update --title
 mrursb: mr update --remove-source-branch
 mrur: mr update --reviewer
 mrv: mr view
+
+# mr: most frequently used
+mail: mr create --push --remove-source-branch --fill --yes --no-editor  # nonconfirming
+hail: mr create --push --fill --yes --no-editor  # nonconfirming  # Mail without --remove-source-branch.
+submit: mr merge --remove-source-branch --auto-merge --yes  # nonconfirming
+hithit: mr merge --auto-merge --yes  # nonconfirming  # Submit without --remove-source-branch.
+
+critique: '!for MR in $(glab mr list --author $USER | awk "NR>=3 {print \$2}" | grep -oP "[0-9]+$"); do open -a "Google Chrome" "$(git url)/-/merge_requests/${MR}"; done'  # nonconfirming
 
