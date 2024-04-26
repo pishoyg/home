@@ -29,6 +29,7 @@ mrcprsbfyne: mr create --push --remove-source-branch --fill --yes --no-editor
 mrd: mr delete
 mre: mr close
 mrl: mr list
+mrlau: '!glab mr list --author "$USER"'
 mrm: mr merge
 mrmamy: mr merge --auto-merge --yes
 mrmrsbamy: mr merge --remove-source-branch --auto-merge --yes

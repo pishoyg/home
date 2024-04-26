@@ -121,6 +121,10 @@
     bwcomrhomo = ! CUR="$(git branch --show-current)" && git checkout master && git reset --hard origin/master && git checkout "${CUR}"  # Restore and come back.
     bwconrhono = ! CUR="$(git branch --show-current)" && git checkout main && git reset --hard origin/main && git checkout "${CUR}"  # Restore and come back.
 
+    bwcrhtotrhoto = ! CUR="$(git branch --show-current)" && git reset --hard trunk && git checkout trunk && git reset --hard origin/trunk && git checkout "${CUR}"  # Move.
+    bwcrhmomrhomo = ! CUR="$(git branch --show-current)" && git reset --hard master && git checkout master && git reset --hard origin/master && git checkout "${CUR}"  # Move.
+    bwcrhnonrhono = ! CUR="$(git branch --show-current)" && git reset --hard main && git checkout main && git reset --hard origin/main && git checkout "${CUR}"  # Move.
+
     bwcotrhbd = ! CUR="$(git branch --show-current)" && git checkout trunk && git reset --hard "${CUR}" && git branch --delete "${CUR}"  # Adopt and delete.
     bwcomrhbd = ! CUR="$(git branch --show-current)" && git checkout master && git reset --hard "${CUR}" && git branch --delete "${CUR}"  # Adopt and delete.
     bwconrhbd = ! CUR="$(git branch --show-current)" && git checkout main && git reset --hard "${CUR}" && git branch --delete "${CUR}"  # Adopt and delete.
