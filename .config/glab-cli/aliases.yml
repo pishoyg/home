@@ -36,6 +36,7 @@ mrmrsbamy: mr merge --remove-source-branch --auto-merge --yes
 mro: mr checkout
 mru: mr update
 mrut: mr update --title
+mrud: mr update --description
 mrursb: mr update --remove-source-branch
 mrur: mr update --reviewer
 mrv: mr view

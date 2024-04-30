@@ -183,7 +183,7 @@
     ddr = clean --dry-run  # Display untracked files.
 
     ddrd = clean --dry-run -d  # Display untracked files, recursing. Go to directories.
-    ddrx = clean -x  # Display untracked files, including ignored files.
+    ddrx = clean --dry-run -x  # Display untracked files, including ignored files.
     ddrxx = clean --dry-run -X  # Display only ignored files.
     ddre = clean --dry-run --exclude  # Display untracked files, and given a pattern, exclude these files from the display.
 
@@ -688,6 +688,9 @@
 
     # grep
     grep = grep  # Look for specified patterns in the tracked files in the work tree, blobs registered in the index file, or blobs in given tree objects. Patterns are lists of one or more search expressions separated by newline characters. An empty string as search expression matches all lines.
+
+    # cherry-pick
+    cherry-pick = cherry-pick
 
     # Rename a branch (from `main` to `master`).
     # git branch --move main master  # g bz main master
