@@ -203,7 +203,9 @@ alias g=git
 # Python
 alias python=python3
 alias pip=pip3
-alias pipif='pip install --break-system-packages'
+pipif() {
+    pip install "$@" --break-system-packages
+}
 
 # Reboot.
 alias reboot='shutdown -r now'
@@ -258,7 +260,7 @@ alias nofri_home='bash ~/.cp_dotfiles.sh --git_repo ~/git_tree/home --message "$
 alias nofri_git='git syncall'
 alias nofri_brew='brew upgrade && brew upgrade $(brew outdated --cask --greedy --quiet | gsed -z "s/\n/ /g")'
 alias nofri_pip='pip-review --local --auto'
-alias nofri='nofri_home && nofri_git && nofri_brew && nofri_pip'
+alias nofri='nofri_home && nofri_git && nofri_pip && nofri_brew'
 
 # yarn
 alias y='yarn'
