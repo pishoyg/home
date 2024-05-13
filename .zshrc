@@ -178,6 +178,15 @@ fi
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+# fzf
+eval "$(fzf --bash)"
+
+# zsh
+eval "$(fzf --zsh)"
+
+# fish
+fzf --fish | source
+
 # ls
 alias ls='ls --color=always -Gh'
 alias lf='ls -F'
@@ -269,4 +278,7 @@ alias yvp='yarn version --patch'
 
 # CodeWhisperer post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh"
+
+# du
+alias duas='du --apparent-size'
 
