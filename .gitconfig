@@ -718,3 +718,8 @@
     # You might also need:
     # git push origin master:master  # g po master:master
     # git push origin --delete main  # g pod main
+[credential]
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true
