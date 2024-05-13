@@ -60,6 +60,7 @@
     a = add
     al = add --all
     af = add --force
+    au = add --update  # Add all known files. Ignore new files.
 
     alc = ! git add --all && git commit
     alcp = ! git add --all && git commit && git push
@@ -72,6 +73,18 @@
     alcane = ! git add --all && git commit --no-edit --amend
     alcanep = ! git add --all && git commit --no-edit --amend && git push
     alcanepf = ! git add --all && git commit --no-edit --amend && git push --force
+
+    auc = ! git add --update && git commit
+    aucp = ! git add --update && git commit && git push
+    aucpf = ! git add --update && git commit && git push --force
+    aucm = ! git add --update && git commit --message
+    aucmdp = ! git add --update && git commit --message DEFAULT && git push
+    auca = ! git add --update && git commit --amend
+    aucap = ! git add --update && git commit --amend && git push
+    aucapf = ! git add --update && git commit --amend && git push --force
+    aucane = ! git add --update && git commit --no-edit --amend
+    aucanep = ! git add --update && git commit --no-edit --amend && git push
+    aucanepf = ! git add --update && git commit --no-edit --amend && git push --force
 
     # branch
     b = branch  # List all of the branches in your repo.
@@ -691,6 +704,9 @@
 
     # cherry-pick
     cherry-pick = cherry-pick
+
+    # count-objects
+    count-objects = count-objects
 
     # Rename a branch (from `main` to `master`).
     # git branch --move main master  # g bz main master
