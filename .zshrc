@@ -178,14 +178,8 @@ fi
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# fzf
-eval "$(fzf --bash)"
-
 # zsh
 eval "$(fzf --zsh)"
-
-# fish
-fzf --fish | source
 
 # ls
 alias ls='ls --color=always -Gh'
@@ -281,4 +275,5 @@ alias yvp='yarn version --patch'
 
 # du
 alias duas='du --apparent-size'
+alias duash='du --apparent-size --human-readable'
 
