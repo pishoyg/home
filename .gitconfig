@@ -367,6 +367,12 @@
     ih1s = diff HEAD~1 --stat
     ih1ps = diff HEAD~1 --patch-with-stat
 
+    ih2 = diff HEAD~2  # Diff the worktree and the grandparent commit.
+    ih2no = diff HEAD~2 --name-only
+    ih2ns = diff HEAD~2 --name-status
+    ih2s = diff HEAD~2 --stat
+    ih2ps = diff HEAD~2 --patch-with-stat
+
     iom = diff origin/master  # Diff the worktree and origin/master.
     iomno = diff origin/master --name-only
     iomns = diff origin/master --name-status
