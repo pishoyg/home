@@ -176,6 +176,8 @@
     calp = ! git commit --amend --all && git push
     clmdp = ! git commit --all --message DEFAULT && git push
 
+    cnv = commit --no-verify
+
     # clean
     d = clean
 
