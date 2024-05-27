@@ -189,6 +189,8 @@
     dxd = clean -x -d  # Clean everything, including ignored files, going into directories.
     dxxd = clean -X -d  # Clean only ignored files, going into directories.
 
+    dxxde = clean -X -d --exclude # Display only ignored files, going into directories.
+
     ddr = clean --dry-run  # Display untracked files.
 
     ddrd = clean --dry-run -d  # Display untracked files, recursing. Go to directories.
@@ -198,6 +200,8 @@
 
     ddrxd = clean --dry-run -x -d  # Display all untracked files, including ignored files, going into directories.
     ddrxxd = clean --dry-run -X -d  # Display only ignored files, going into directories.
+
+    ddrxxde = clean --dry-run -X -d --exclude # Display only ignored files, going into directories.
 
     ddf = clean -d --force  # Force-clean, recursively. Go to directories.
     dxf = clean -x --force  # Force-clean everything, including ignored files.

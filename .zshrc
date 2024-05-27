@@ -225,6 +225,9 @@ alias beep='tput bel'
 alias frog='afplay /System/Library/Sounds/Frog.aiff'
 alias yo='say yo'
 
+# make
+alias makedr='make --dry-run'
+
 # curl
 alias curl5='curl -fiv'  # There is no -e.
 
