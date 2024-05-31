@@ -250,6 +250,15 @@ ec() {
     echo "$@" | pbcopy
 }
 
+# grep
+alias grepds='grep --directories=skip'
+
+# tidy
+alias tidyimq='tidy -i -m -q'  # indent, in-place, quiet
+
+# dig
+digs='dig +short'
+
 # pre-commit
 alias pc='pre-commit'
 
