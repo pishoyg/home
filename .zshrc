@@ -268,6 +268,7 @@ alias pcscpccy='pre-commit sample-config > .pre-commit-config.yaml'
 alias pci='pre-commit install'
 
 alias pcr='pre-commit run'
+alias pcrf='pre-commit run --files'
 alias pcraf='pre-commit run --all-files'
 
 # Good morning!

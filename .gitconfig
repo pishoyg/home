@@ -344,6 +344,11 @@
     # diff, difftool
     i = diff  # Diff the worktree and the index.
 
+    icmwsisae = diff --color-moved-ws=ignore-space-at-eol
+    icmwsisc = diff --color-moved-ws=ignore-space-change
+    icmwsias = diff --color-moved-ws=ignore-all-space
+    icmwsaic = diff --color-moved-ws=allow-indentation-change
+
     ino = diff --name-only
     ins = diff --name-status
     is = diff --stat
